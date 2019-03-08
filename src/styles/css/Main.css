@@ -1,0 +1,13 @@
+body {
+  padding: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif; }
+
+a {
+  text-decoration: none; }
+
+.mdi {
+  display: flex;
+  justify-content: center;
+  align-items: center; }

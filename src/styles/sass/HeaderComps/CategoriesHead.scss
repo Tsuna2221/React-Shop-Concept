@@ -1,0 +1,7 @@
+@import "../Mixins";
+
+.CategoriesHead{
+    @include size(100%, 46px);
+    z-index: 1;
+    position: relative;
+}

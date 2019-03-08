@@ -1,0 +1,11 @@
+@import "../Mixins";
+
+.UserHead{
+    @include size(100%, 30px);
+    justify-content: space-between;
+    position: relative;
+}
+
+.alert-circle{
+    @include size(22px, 22px);
+}

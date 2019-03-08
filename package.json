@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gulp": "^4.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8"
@@ -21,5 +22,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-sass": "^4.0.2"
+  }
 }

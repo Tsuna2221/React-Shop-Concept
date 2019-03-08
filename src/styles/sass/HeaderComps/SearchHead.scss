@@ -1,0 +1,25 @@
+@import "../Mixins";
+
+.SearchHead{
+    @include size(100%, 60px);
+
+    &__input-container{
+        
+        .search-input{
+            @include size(530px , 37px);
+            outline: none;
+
+            &::placeholder{
+                color: #DEDEDE;
+                font-style: italic;
+            }
+        }
+        .search-select{
+            height: 39px;
+            outline: none;
+        }
+        .search-button{
+            @include size(44px, 37px)
+        }
+    }
+}
