@@ -11,3 +11,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.main-body {
+  padding: 0px 107px; }

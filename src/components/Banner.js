@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Banner extends Component {
     render() {
         return (
-            <div className='main-banner-container'>
+            <div className='main-banner-container mar-t-16'>
                 <div className='Banner-Container'>
-                    {this.drawBanner(5)}
+                    {this.drawBanner(4)}
                 </div>
             </div>
         );
@@ -32,7 +32,7 @@ class Banner extends Component {
 
         this.setTransition()
         
-    }, 7000)
+    }, 3000)
 
     setTransition = () => document.querySelector('.Banner-Container').style.transform = `translateX(-${this.state.index - 1}00%)`
 }

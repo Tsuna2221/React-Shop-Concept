@@ -11,7 +11,7 @@
         .banner{
             @include size(100%, 100%);
     
-            &.nb1{background-color: rgb(0, 86, 216);}
+            &.nb1{background-color: #6D9EE8;}
             &.nb2{background-color: rgb(0, 216, 187);}
             &.nb3{background-color: rgb(216, 86, 0);}
             &.nb4{background-color: rgb(216, 0, 162);}
