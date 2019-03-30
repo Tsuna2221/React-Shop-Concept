@@ -6,14 +6,14 @@ let cleanCSS = require('gulp-clean-css');
 sass.compiler = require('node-sass');
  
 gulp.task('sass', function () {
-  return gulp.src('src/styles/sass/**/*.scss')
+  return gulp.src('src/styles/sass/**/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./src/styles/css'));
 });
 
 
 gulp.task('concat', () => {
-    return gulp.src('src/styles/css/**/*.css')
+    return gulp.src('src/styles/css/**/**/*.css')
         .pipe(concat("bundle.css"))
         .pipe(gulp.dest('src'));
 })

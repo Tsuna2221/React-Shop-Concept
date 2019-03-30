@@ -40,6 +40,9 @@
 .s-20 {
   font-size: 20px; }
 
+.s-21 {
+  font-size: 21px; }
+
 .s-22 {
   font-size: 22px; }
 
@@ -68,7 +71,7 @@
   box-shadow: 1px 1px 4px 0px #00000026; }
 
 .sd-div {
-  box-shadow: 0px 0px 7px 0px #00000026; }
+  box-shadow: 0px 0px 7px 1px #00000026; }
 
 .sd-low {
   box-shadow: 0 1px 3px 0 #00000026; }
@@ -140,6 +143,9 @@
   justify-content: center;
   align-items: center; }
 
+.a-bet {
+  justify-content: space-between; }
+
 .br-low {
   border-radius: 6px; }
 
@@ -147,7 +153,13 @@
   border-radius: 100px; }
 
 .bs-light {
-  border: 1px solid #DEDEDE; }
+  border: 1px solid #dedede; }
+
+.bs-blue {
+  border: 1px solid #6D9EE8; }
 
 .clickable {
   cursor: pointer; }
+
+.width-fit {
+  width: fit-content; }

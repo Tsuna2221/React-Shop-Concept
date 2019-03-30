@@ -1,0 +1,9 @@
+.UserHead {
+  width: 100%;
+  height: 30px;
+  justify-content: space-between;
+  position: relative; }
+
+.alert-circle {
+  width: 22px;
+  height: 22px; }

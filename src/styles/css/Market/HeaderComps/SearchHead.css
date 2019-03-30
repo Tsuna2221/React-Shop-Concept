@@ -1,0 +1,16 @@
+.SearchHead {
+  width: 100%;
+  height: 60px; }
+  .SearchHead__input-container .search-input {
+    width: 530px;
+    height: 37px;
+    outline: none; }
+    .SearchHead__input-container .search-input::placeholder {
+      color: #DEDEDE;
+      font-style: italic; }
+  .SearchHead__input-container .search-select {
+    height: 39px;
+    outline: none; }
+  .SearchHead__input-container .search-button {
+    width: 44px;
+    height: 37px; }

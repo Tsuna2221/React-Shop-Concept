@@ -1,0 +1,26 @@
+@import "../Mixins";
+
+.categories-cell{
+    position: relative;
+
+    .categories-interaction{
+        @include size(100%, 100%);
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        top: -30px;
+        right: -30px;
+
+        .categories-button{
+            user-select: none;
+            padding: 14px 24px;
+            transition: 0.14s ease;
+
+            &:hover{
+                background-color: #6D9EE8;
+                color: #fff;
+            }
+        }
+    }
+}
