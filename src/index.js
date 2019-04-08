@@ -8,6 +8,6 @@ import Dashboard from './components/Dashboard';
 ReactDOM.render((
     <Router>
         <Route exact path="/" component={App}/>
-        <Route exact path="/admin" component={Dashboard}/>
+        <Route path="/admin" component={Dashboard}/>
     </Router>
 ), document.getElementById('root'));

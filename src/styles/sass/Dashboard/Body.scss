@@ -1,0 +1,29 @@
+@import "../Mixins";
+@import "../Variables";
+
+.body{
+    width: -webkit-fill-available;
+    height: fit-content;
+    position: relative;
+    left: 226px;
+    top: 45px;
+
+    .body-head{
+        @include size(100%, 58px);
+        border-left: 5px solid;
+        border-bottom: 1px solid $dashboard-border-color;
+    }
+
+    .panel-container{
+        height: calc(100vh - 124px);
+        
+        .panel{
+            width: 985px;
+            margin: 0 5%;
+        }
+    }
+}
+
+.table-border{
+    border-top: 1px solid $dashboard-border-color;
+}

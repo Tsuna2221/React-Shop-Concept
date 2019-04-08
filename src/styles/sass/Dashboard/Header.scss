@@ -1,0 +1,7 @@
+@import "../Mixins";
+@import "../Variables";
+
+.d-header{
+    @include size(100vw, 45px);
+    z-index: 100;
+}

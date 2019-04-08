@@ -14,10 +14,27 @@ a{
 
 .mdi{
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 .main-body{
     padding: 0px 107px;
+}
+
+::-webkit-scrollbar {
+    @include size(6px, 3px);
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 1px grey; 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(153, 153, 153); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(129, 129, 129); 
 }

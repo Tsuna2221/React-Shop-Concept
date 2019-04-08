@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class UserHead extends Component {
     render() {
         return (
-            <div className='UserHead sd-div bg-white d-flex a-ver'>
+            <div className='UserHead sd-medium bg-white d-flex a-ver'>
                 <div className="UserHead__side-left d-flex a-ver mar-l-20">
                     <div className="cell-lang d-flex a-ver">
                         <span className="mdi mdi-earth s-18 c-medium"></span>

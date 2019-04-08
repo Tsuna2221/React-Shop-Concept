@@ -62,7 +62,7 @@ class CategoriesSection extends Component {
 
                         <div className="categories-button bs-blue c-blue width-fit clickable mar-t-16">Shop Now</div>
                     </div>
-                    <img src={img} className='sd-div br-low' alt=""/>
+                    <img src={img} className='sd-medium br-low' alt=""/>
                 </div>
             )
         })

@@ -1,5 +1,6 @@
 @import "Variables";
 @import "Mixins";
+@import "Padding";
 
 //Color
 
@@ -13,11 +14,16 @@
 
 .c-blue{color: #6D9EE8;}
 
+.c-light2{color: #C4C4C4;}
+
 //Weight
 
 .w-regular{font-weight: 400}
 
 .w-medium{font-weight: 500}
+
+.w-semibold{font-weight: 600}
+
 
 //Style
 
@@ -58,9 +64,9 @@
 //Shadows
 .sd-input{box-shadow: 1px 1px 4px 0px #00000026;}
 
-.sd-div{box-shadow: 0px 0px 7px 1px #00000026;}
-
 .sd-low{box-shadow: 0 1px 3px 0 #00000026;}
+
+.sd-medium{box-shadow: 0px 0px 7px 1px #00000026;}
 
 .sd-heavy{box-shadow: 0px 0px 10px 3px #00000026;}
 
@@ -100,12 +106,23 @@
     border-radius: 50px;
 }
 
+.imgs-table{
+    max-width: 60px;
+    max-height: 60px;
+}
+
 //Position
 
 .top-fixed{
     position: fixed;
     top: 0;
 }
+
+.pos-fixed{position: fixed;}
+
+.pos-relative{position: relative;}
+
+.pos-absolute{position: absolute;}
 
 //Line Height
 
@@ -140,6 +157,11 @@
 .a-cen{justify-content: center; align-items: center;}
 
 .a-bet{justify-content: space-between}
+
+.f-left{text-align:left;}
+
+.f-right{text-align:right;}
+
 //Border
 //Radius
 
@@ -157,12 +179,98 @@
     border: 1px solid #dedede;
 }
 
+.bs-dashboard{
+    border: 1px solid $dashboard-border-color;
+}
+
 .bs-blue{
     border: 1px solid #6D9EE8;
 }
+
+// Width
+
+.sbw-small{width: 125px;}
+
+.sbw-medium{width: 225px;}
+
+.sbw-big{width: 345px;}
+
+.sbw-fit{width: -webkit-fill-available;}
+
+//Height
+
+.body-height{height: calc(100vh - 45px);}
+
+.fit-height{height: -webkit-fill-available;}
+
+//Inputs
+
+.si-widthfit{
+    @extend .no-outline;
+    @extend .pad-10;
+    @extend .bs-dashboard;
+    @extend .br-low;
+    @extend .sbw-fit;
+}
+
+.si-widthsmall{
+    @extend .no-outline;
+    @extend .pad-10;
+    @extend .bs-dashboard;
+    @extend .br-low;
+    @extend .sbw-small;
+}
+
+.si-widthmedium{
+    @extend .no-outline;
+    @extend .pad-10;
+    @extend .bs-dashboard;
+    @extend .br-low;
+    @extend .sbw-medium;
+}
+
+.si-image{
+    @extend .no-outline;
+    @extend .bs-dashboard;
+    @extend .br-low;
+    @extend .sbw-medium;
+    @include size(110px, 110px);
+}
+
+//Buttons
+
+.sb-button{
+    @extend .d-flex;
+    @extend .clickable;
+    @extend .br-low;
+    @extend .a-hor;
+    min-width: 37px; 
+}
+
+.tx-button{
+    @extend .br-low;
+    @extend .s-13;
+    @extend .w-semibold;
+    @extend .clickable;
+    display: initial;
+    padding: 10px 18px;
+    color: #fff;
+}
+
+//Overflow
+
+.overflow-x-scroll{overflow-x: scroll}
+
+.overflow-y-scroll{overflow-y: scroll}
 
 //Mics
 
 .clickable{cursor: pointer;}
 
 .width-fit{width: fit-content;}
+
+.no-outline{outline: none;}
+
+.v-align{vertical-align: middle;}
+
+.no-select{user-select: none;}
