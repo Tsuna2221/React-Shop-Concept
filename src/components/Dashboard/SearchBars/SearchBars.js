@@ -11,4 +11,12 @@ var SearchBarProducts = (props) => {
     );
 }
 
-export default SearchBarProducts;
+var SearchBarCategories = (props) => {
+    return (
+        <div className="search-bar d-flex mar-v-20">
+            <input className="si-widthmedium mar-r-10" type="text" placeholder="Category"/>
+        </div>
+    );
+}
+
+export {SearchBarProducts, SearchBarCategories};

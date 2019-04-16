@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import SearchBarProducts from './SearchBars/Products'
+import {SearchBarProducts, SearchBarCategories} from './SearchBars/SearchBars'
 import ProductsTable from './Tables/ProductsTable'
+import CategoriesTable from './Tables/CategoriesTable'
 import ProductForm from './Forms/InsertProductForm'
+import CategoryForm from './Forms/InsertCategoryForm'
+import Counter from './MiscComponents/Counter'
 
 class Body extends Component {
     render() {
@@ -23,13 +26,34 @@ class Body extends Component {
     }
 
     state = {
-        fetchedProducts: []
+        fetchedProducts: [],
+        fetchedCategories: [],
+        categoriesName: [],
     }
 
     componentDidMount = () => {
-        var url = "http://127.0.0.1:5000/products"
+        var productsUrl = "http://127.0.0.1:5000/products"
+        var categoriesUrl = "http://127.0.0.1:5000/categories"
 
-        fetch(url).then(res => res.json()).then(res => {this.setState({fetchedProducts: res.data})})
+        fetch(productsUrl)
+            .then(res => res.json())
+            .then(res => {this.setState({fetchedProducts: res.data.products})})
+            .then(fetch(categoriesUrl).then(res => res.json())
+            .then(res => {
+                let data = res.data
+                let categories = []
+
+                for(let i in data) categories.push(data[i].category_name)
+
+                this.setState(
+                    {
+                        ...this.state, 
+                        categoriesName: categories,
+                        fetchedCategories: res
+                    })
+                
+                console.log(this.state)
+            }))
     }
 
     drawPanel = () => {
@@ -44,10 +68,46 @@ class Body extends Component {
                         <ProductsTable fetchedProducts={this.state.fetchedProducts} color={color} type={name}/>
                     </Fragment>
                 )
+
             case "/admin/products/insert":
                 return(
                     <Fragment>
-                        <ProductForm color={color}/>
+                        <ProductForm categories={this.state.categoriesName} color={color}/>
+                    </Fragment>
+                )
+
+            case "/admin/categories":
+                let {total_products, total_categories} = this.state.fetchedCategories
+                let countData = [
+                    {
+                        label: "Registered Products",
+                        count: total_products
+                    },
+                    {
+                        label: "Registered Categories",
+                        count: total_categories
+                    }
+                ]
+
+                return(
+                    <Fragment>
+                        <div className="d-flex a-bet">
+                            <div>
+                                <SearchBarCategories color={color}/>
+                                <a href="categories/insert" className="tx-button" style={{backgroundColor: color}}>Insert Category</a>
+                            </div>
+                            <div className="mar-t-20">
+                                <Counter color={color} data={countData}/>
+                            </div>
+                        </div>
+                        <CategoriesTable fetchedCategories={this.state.fetchedCategories} color={color} type={name}/>
+                    </Fragment>
+                )
+
+            case "/admin/categories/insert":
+                return(
+                    <Fragment>
+                        <CategoryForm color={color}/>
                     </Fragment>
                 )
 

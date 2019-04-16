@@ -235,6 +235,9 @@
 .w-semibold, .tx-button {
   font-weight: 600; }
 
+.w-bold {
+  font-weight: 700; }
+
 .sty-italic {
   font-style: italic; }
 

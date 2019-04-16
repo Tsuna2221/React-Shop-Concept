@@ -4,3 +4,8 @@
 	opacity: 0;
 	position: absolute;
 }
+
+.image-fit{
+    height: -webkit-fill-available;
+    width: inherit;
+}

@@ -207,3 +207,6 @@
 
 .mar-l-30 {
   margin-left: 30px; }
+
+.mar-child-18:nth-last-child(1) {
+  margin-left: 18px; }

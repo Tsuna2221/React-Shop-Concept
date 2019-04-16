@@ -18,7 +18,8 @@ class ProductForm extends Component {
                 </div>
                 <div className="row d-flex a-bet">
                     <FormInput handling={this.handleForm} label="Manufacturer" jkey="company"/>
-                    <FormInput handling={this.handleForm} label='Categories (Separed by ";")' jkey="categories"/>
+                    <FormInput handling={this.handleForm} selection={this.props.categories} type="select" label="Category" jkey="category"/>
+                    <FormInput handling={this.handleForm} label='Sub-categories' jkey="subcategories"/>
                     <FormInput handling={this.handleForm} label="Price" jkey="price"/>
                     <FormInput handling={this.handleForm} label="Discount%" jkey="price_percentage"/>
                 </div>
@@ -29,7 +30,7 @@ class ProductForm extends Component {
                     <FormInput type="image" jkey="images" label="Images" action={this.handleImageUpload} imagePreview={this.state.imageArray}/>
                 </div>
                 <div className="row">
-                    <FormInput type="button" color={this.props.color} action={this.submitForm}/>
+                    <FormInput type="button" color={this.props.color} text="Create Product" action={this.submitForm}/>
                 </div>
             </div>
         );
@@ -76,7 +77,7 @@ class ProductForm extends Component {
 
     submitForm = () => {
         var url = 'http://127.0.0.1:5000/products/insert'
-        var {title, company, categories, price, price_percentage, description } = this.state.form
+        var {title, company, category, price, subcategories, price_percentage, description } = this.state.form
         var imageState = this.state.imageArray
         var folderString = Math.random().toString(36).substr(2,6)
 
@@ -106,18 +107,24 @@ class ProductForm extends Component {
                 release_date: Date.now(),
                 rating: 0
             },
-            categories: categories.split(';')
+            category: {
+                category_name: category,
+                sub_category: {   
+                    name: subcategories.match(/\[(.*)\]/).pop(),
+                    type: subcategories.match(/\((.*)\)/).pop()
+                }
+            }
         }
 
         imageLoop().then(res => {
             var images = res
             data.images = images
 
+            console.log(data)
             axios.post(url, data).then(res => {
                 window.location.href = 'http://localhost:3000/admin/products'
             })
         })
     }
 }
-
 export default ProductForm;

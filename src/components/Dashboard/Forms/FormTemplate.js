@@ -2,48 +2,60 @@ import React, {Component} from 'react';
 
 class FormInput extends Component {
     render() {
-        if(this.props.type === 'fit' || !this.props.type){
+        var { type, handling, jkey, label, action, text } = this.props
+
+        if(type === 'fit' || !type){
             return (
-                <div key={this.props.label} className="form-input mar-t-16">
-                    <p className="s-13 c-light2">{this.props.label}</p>
-                    <input onChange={this.props.handling} name={this.props.jkey} className="si-widthfit mar-t-10" type="text"/>
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
+                    <input onChange={handling} name={jkey} className="si-widthfit mar-t-10" type="text"/>
                 </div>
             )
-        }else if(this.props.type === 'area'){
+        }else if(type === 'area'){
             return (
-                <div key={this.props.label} className="form-input mar-t-16">
-                    <p className="s-13 c-light2">{this.props.label}</p>
-                    <textarea onChange={this.props.handling} name={this.props.jkey} className="si-widthfit mar-t-10" cols="30" rows="10"></textarea>
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
+                    <textarea onChange={handling} name={jkey} className="si-widthfit mar-t-10" cols="30" rows="10"></textarea>
                 </div>
             )
-        }else if(this.props.type === 'medium'){
+        }else if(type === 'medium'){
             return (
-                <div key={this.props.label} className="form-input mar-t-16">
-                    <p className="s-13 c-light2">{this.props.label}</p>
-                    <input onChange={this.props.handling} name={this.props.jkey} className="si-widthmedium mar-t-10" type="text"/>
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
+                    <input onChange={handling} name={jkey} className="si-widthmedium mar-t-10" type="text"/>
                 </div>
             )
         }
-        else if(this.props.type === 'small'){
+        else if(type === 'small'){
             return (
-                <div key={this.props.label} className="form-input mar-t-16">
-                    <p className="s-13 c-light2">{this.props.label}</p>
-                    <input onChange={this.props.handling} name={this.props.jkey} className="si-widthsmall mar-t-10" type="text"/>
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
+                    <input onChange={handling} name={jkey} className="si-widthsmall mar-t-10" type="text"/>
                 </div>
             )
-        }else if(this.props.type === 'image'){
+        }else if(type === 'image'){
             return (
-                <div key={this.props.label} className="form-input mar-t-16">
-                    <p className="s-13 c-light2">{this.props.label}</p>
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
                     <div className="d-flex a-bet">
                         {this.drawImagePreview()}
                     </div>
                 </div>
             )
-        }else if(this.props.type === 'button'){
+        }else if(type === 'button'){
             return (
-                <div key={this.props.label} className="form-input mar-t-30">
-                    <div onClick={this.props.action} className="tx-button" style={{backgroundColor: this.props.color}}>Insert Products</div>
+                <div key={label} className="form-input mar-t-30">
+                    <div onClick={action} className="tx-button" style={{backgroundColor: this.props.color}}>{text}</div>
+                </div>
+            )
+        }else if(type === 'select'){
+            return (
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
+                    <select onChange={handling} name={jkey} className="si-widthmedium mar-t-10">
+                        <option value=""></option>
+                        {this.drawSelection(this.props.selection)}
+                    </select>
                 </div>
             )
         }
@@ -62,6 +74,12 @@ class FormInput extends Component {
         }
 
         return containers.map(container => container)
+    }
+
+    drawSelection = (data) => {
+        return data.map(select => {
+            return <option value={select}>{select}</option>
+        })
     }
 }
 
