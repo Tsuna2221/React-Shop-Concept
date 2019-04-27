@@ -84,6 +84,7 @@ render() {
 	}
 
 	componentDidMount = () => {
+		console.log(this.props)
 		var sections = []
 		var colors = []
 		for (let i = 0; i < this.state.sections.length; i++) {

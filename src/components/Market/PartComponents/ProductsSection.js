@@ -81,7 +81,7 @@ class ProductsSection extends Component {
 
             return (
                 <div key={id} className="product-cell pad-14 sd-medium br-low bg-white">
-                    <img src="https://picsum.photos/190/170/?image=924" className="product-img" alt=""/>
+                    <img src="https://res.cloudinary.com/db5msl9ld/image/upload/v1555259827/eumx9w/mhh4i4iskfwdfscul78n.jpg" className="product-img" alt=""/>
                     <p className="product-title mar-v-8 s-14 c-medium">{title.substr(0,50)}...</p>
                     <div className="product-price-rating d-flex a-bet">
                         <div className="product-pricing mar-t-14">

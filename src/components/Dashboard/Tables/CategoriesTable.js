@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class CategoriesTable extends Component {
     render() {
         return (
-            <div className='mar-t-20'>
+            <div className='mar-t-30'>
                 {this.drawTable()}
             </div>
         );

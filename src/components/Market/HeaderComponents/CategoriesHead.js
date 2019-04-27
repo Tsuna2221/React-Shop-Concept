@@ -16,7 +16,7 @@ class CategoriesHead extends Component {
 
     }
 
-    drawCategories = () => this.props.categories.map(cat => <a key={cat.val} href="/" className="c-medium s-13 mar-h-14">{cat.val}</a>)
+    drawCategories = () => this.props.categories ? this.props.categories.data.map(cat => <a key={cat.category_name} href={'/c/' + cat.category_name.replace(/([\s])/g, '-')} className="c-medium s-13 mar-h-14">{cat.category_name}</a>) : null
 }
 
 export default CategoriesHead;

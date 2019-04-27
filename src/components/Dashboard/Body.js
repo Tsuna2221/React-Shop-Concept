@@ -50,9 +50,7 @@ class Body extends Component {
                         ...this.state, 
                         categoriesName: categories,
                         fetchedCategories: res
-                    })
-                
-                console.log(this.state)
+                    })                
             }))
     }
 

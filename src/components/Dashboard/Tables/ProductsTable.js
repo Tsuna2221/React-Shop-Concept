@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class ProductsTable extends Component {
     render() {
         return (
-            <div className='mar-t-20'>
+            <div className='mar-t-30'>
                 {this.drawTable()}
             </div>
         );
@@ -20,11 +20,11 @@ class ProductsTable extends Component {
                         <td className="d-flex a-cen" height="70px">
                             <img className="imgs-table mar-r-14" src={images[0]} alt=""/>
                         </td>
-                        <td width="60%" className="v-align">{title}</td>
+                        <td width="57%" className="v-align">{title}</td>
                         <td width="13%" className="v-align">{company}</td>
                         <td width="10%" className="v-align">{created_at.substr(5,11)}</td>
                         <td width="11%" className="v-align">${parsedDiscount(price, price_percentage)} at {price_percentage}%</td>
-                        <td width="10%" className="v-align f-right w-semibold" style={{color: this.props.color}}>Link</td>
+                        <td width="20%" className="v-align f-right w-semibold" style={{color: this.props.color}}>Link</td>
                     </tr>
                 </tbody>
             )
