@@ -21,7 +21,7 @@ class CategoriesSection extends Component {
     state = {
         categories: [
             {
-                label: 'Phones & Tablets',
+                label: 'Cell Phones and Tablets',
                 img: Phones
             },
             {
@@ -29,7 +29,7 @@ class CategoriesSection extends Component {
                 img: Games
             },
             {
-                label: 'Computer & Office',
+                label: 'Computers and Office',
                 img: Computers
             },
         ]
@@ -41,13 +41,13 @@ class CategoriesSection extends Component {
             var labelTitle = []
 
             for(var i = 0; i < 2; i++){
-                labelTitle = label.split('&')
+                labelTitle = label.split('and')
             }
 
             var drawLabel = labelTitle.length > 1 
                 ? 
                 (<Fragment>
-                    <p className="s-21 c-medium lh-medium">{labelTitle[0]}&</p>
+                    <p className="s-21 c-medium lh-medium">{labelTitle[0]}and</p>
                     <p className="s-26 c-blue">{labelTitle[1]}</p>
                  </Fragment>) 
                 : 
@@ -60,7 +60,7 @@ class CategoriesSection extends Component {
                     <div className="categories-interaction">
                         {drawLabel}
 
-                        <div className="categories-button bs-blue c-blue width-fit clickable mar-t-16">Shop Now</div>
+                        <a href={'c/' + label.replace(/\s/g, '-')} className="categories-button bs-blue c-blue width-fit clickable mar-t-16">Shop Now</a>
                     </div>
                     <img src={img} className='sd-medium br-low' alt=""/>
                 </div>

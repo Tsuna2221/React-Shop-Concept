@@ -13,7 +13,8 @@ render() {
 			<Header categories={this.state.category}/>
 			<Router>
 				<Route exact path="/" component={Home}/>
-				<Route path='/c/:category' component={PathCategory}/>
+				<Route exact path='/c/:category' component={PathCategory}/>
+				<Route exact path='/c/:category/:subcategory' component={PathCategory}/>
 			</Router>
 		</div>
 		);

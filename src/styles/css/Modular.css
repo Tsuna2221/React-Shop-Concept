@@ -211,6 +211,12 @@
 .c-light {
   color: #DEDEDE; }
 
+.c-light2 {
+  color: #C4C4C4; }
+
+.c-light3 {
+  color: #B5B5B5; }
+
 .c-medium {
   color: #9B9B9B; }
 
@@ -220,11 +226,8 @@
 .c-white {
   color: #F1F1F1; }
 
-.c-blue {
+.c-blue, .t-colorize-text:hover {
   color: #6D9EE8; }
-
-.c-light2 {
-  color: #C4C4C4; }
 
 .w-regular {
   font-weight: 400; }
@@ -240,6 +243,19 @@
 
 .sty-italic {
   font-style: italic; }
+
+.t-colorize-text {
+  transition: .2s ease; }
+
+.t-underline-text {
+  transition: .2s ease; }
+  .t-underline-text:hover {
+    text-decoration: underline; }
+
+.t-b-darken-text {
+  transition: .2s ease; }
+  .t-b-darken-text:hover {
+    color: #4181e1; }
 
 .s-12 {
   font-size: 12px; }
@@ -449,3 +465,6 @@
 
 .no-select {
   user-select: none; }
+
+.price-top {
+  top: -0.5em; }

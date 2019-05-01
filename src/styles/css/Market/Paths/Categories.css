@@ -1,0 +1,18 @@
+.PathCategory .cat-sidebar {
+  width: 230px;
+  border-right: 1px solid #dedede; }
+  .PathCategory .cat-sidebar .s-listing {
+    margin: 15px 0 0 20px; }
+    .PathCategory .cat-sidebar .s-listing:nth-child(1) {
+      margin: 0 0 0 20px; }
+
+.PathCategory .CatalogBody .unordered-products li {
+  height: 185px; }
+  .PathCategory .CatalogBody .unordered-products li .p-container .p-preview {
+    display: grid;
+    align-items: center;
+    min-width: 250px;
+    height: 185px; }
+    .PathCategory .CatalogBody .unordered-products li .p-container .p-preview img {
+      max-width: -webkit-fill-available;
+      max-height: -webkit-fill-available; }

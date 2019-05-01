@@ -6,6 +6,10 @@
 
 .c-light{color: #DEDEDE;}
 
+.c-light2{color: #C4C4C4;}
+
+.c-light3{color: #B5B5B5;}
+
 .c-medium{color: #9B9B9B;}
 
 .c-strong{color: #7E8084;}
@@ -14,7 +18,6 @@
 
 .c-blue{color: #6D9EE8;}
 
-.c-light2{color: #C4C4C4;}
 
 //Weight
 
@@ -30,6 +33,30 @@
 //Style
 
 .sty-italic{font-style: italic;}
+
+//Transitions
+////Text
+.t-colorize-text{
+    transition: .2s ease;
+    &:hover{
+        @extend .c-blue;
+    }
+}
+
+.t-underline-text{
+    transition: .2s ease;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+.t-b-darken-text{
+    transition: .2s ease;
+    &:hover{
+        color: darken($blue, 10%);
+    }
+}
+
 
 //Size
 
@@ -276,3 +303,5 @@
 .v-align{vertical-align: middle;}
 
 .no-select{user-select: none;}
+
+.price-top{top: -0.5em;}

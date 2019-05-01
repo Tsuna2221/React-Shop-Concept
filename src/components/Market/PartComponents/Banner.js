@@ -5,33 +5,36 @@ class Banner extends Component {
         return (
             <div className='main-banner-container mar-t-16'>
                 <div className='Banner-Container'>
-                    {this.drawBanner(4)}
+                    
+                    {this.drawBanner(this.state.bannerLength)}
                 </div>
             </div>
         );
     }
 
     state = {
-        index: 1
+        index: 1,
+        bannerLength: 4
+    }
+
+    componentDidMount = () => {
+        this.transitionTiming(this.state.bannerLength)
     }
 
     drawBanner = (num) => {
         var times = []
         for(var i = 0; i < num; i++){ times.push(i) }
 
-        this.transitionTiming(num)
-
         return times.slice().map((e, i) => <div key={i} className={`banner d-flex a-cen nb${i + 1}`}>{i + 1}</div>)
     }
 
-    transitionTiming = (num) => setTimeout(() => {
+    transitionTiming = (num) => setInterval(() => {
         var times = []
         for(var i = 0; i < num; i++){ times.push(i) }
 
         !times.includes(this.state.index) ? this.setState({index: 1}) : this.setState({index: this.state.index + 1})
 
-        this.setTransition()
-        
+        this.setTransition()  
     }, 3000)
 
     setTransition = () => document.querySelector('.Banner-Container').style.transform = `translateX(-${this.state.index - 1}00%)`

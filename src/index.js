@@ -9,6 +9,7 @@ ReactDOM.render((
     <Router>
         <Route exact path="/" component={App}/>
         <Route exact path='/c/:category' component={App}/>
+        <Route exact path='/c/:category/:subcategory' component={App}/>
         <Route path="/admin" component={Dashboard}/>
     </Router>
 ), document.getElementById('root'));
