@@ -38,21 +38,20 @@ class PathCategory extends Component {
                 fetchCatAndProducts(categoriesURL, productSubsURL).then((data) => {this.setState({linkCategory: data.categories, linkProducts: data.products})})
             }
         }
-
-        console.log(this)
     }
 
     drawPages = () => {
-        var { href } = window.location
-        var pageString = href.includes('?') ? '&page=' : '?page='
+        var { href, origin, pathname } = window.location
+        var pageString = href.includes('?') ? href.includes('?page') ? '?page=' : '&page=' : '?page='
+        var url = href.includes('?page') ? origin + pathname : href.replace(/[&page=]+[0-9]/, "")
         var { total_pages } = this.state.linkProducts
         var pageList = []
 
         for(var i = 0; i < total_pages; i++){
-            if(getQueryString().page){
-                pageList.push(<a href={href + pageString + (i + 1)}>{i + 1}</a>)
+            if(parseInt(getQueryString().page) === (i + 1)){
+                pageList.push(<span className="s-18 c-black w-medium mar-h-6">{i + 1}</span>)
             }else{
-                pageList.push(<a href={href + pageString + (i + 1)}>{i + 1}</a>)
+                pageList.push(<a className="s-18 c-blue mar-h-6" href={url + pageString + (i + 1)}>{i + 1}</a>)
             }
         }
 
