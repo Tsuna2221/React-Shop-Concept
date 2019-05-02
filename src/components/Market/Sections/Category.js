@@ -18,15 +18,18 @@ class PathCategory extends Component {
 
     state = {
         linkCategory: {},
-        linkProducts: {}
+        linkProducts: {data: {}}
     }
 
     componentDidMount = () => {
         let { match } = this.props
         let page = (parseInt(getQueryString().page || 1) * 20) - 20 || 0
+        let companyString = getQueryString().manufacturer ? `&company=${getQueryString().manufacturer.replace(/-/g, " ")}` : "" 
+        let subString = match.params.subcategory ? `&sub=${match.params.subcategory.replace(/-/g, " ")}` : "" 
         let categoriesURL = `http://127.0.0.1:5000/categories?category=${match.params.category.replace(/([-])/g, ' ')}`
-        let productPre = `http://127.0.0.1:5000/products?offset=${page}&category=${match.params.category.replace(/([-])/g, ' ')}`
-
+        let productPre = `http://127.0.0.1:5000/products?offset=${page}${subString}&category=${match.params.category.replace(/([-])/g, ' ')}${companyString}`
+        
+        console.log(productPre)
         if(!this.props.match.params.subcategory){
             fetchCatAndProducts(categoriesURL, productPre).then((data) => {this.setState({linkCategory: data.categories, linkProducts: data.products})})
         }else{

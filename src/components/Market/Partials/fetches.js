@@ -1,6 +1,6 @@
 async function fetchCatAndProducts(catURL, proURL){
     var cat = await fetch(catURL).then(res => res.json()).then(categories => {
-        return categories.data
+        return categories
     })
 
     var prod = await fetch(proURL).then(res => res.json()).then(products => {
