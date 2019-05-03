@@ -6,6 +6,8 @@ import { getQueryString } from '../Partials/queryPartials'
 import { fetchCatAndProducts } from '../Partials/fetches'
 
 
+/********** Set Constructor() ***********/
+
 class PathCategory extends Component {
     render() {
         return (
