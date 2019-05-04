@@ -181,9 +181,18 @@
 
 .mar-l-50{margin-left: 50px;}
 
+//Centralize
+
 .mar-h-cen{margin: 0 auto}
 
 .mar-v-cen{margin: auto 0}
+
+
+//Misc
+
+.mar-a-h-80{
+    margin: 0 80px;
+}
 
 .mar-child-18{
     &:nth-last-child(1){

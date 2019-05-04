@@ -45,6 +45,7 @@ class SideManufact extends Component {
                         </li>
                     )
                 }
+                return;
             })
     
             return (

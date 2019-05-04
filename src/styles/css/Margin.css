@@ -256,5 +256,8 @@
 .mar-v-cen {
   margin: auto 0; }
 
+.mar-a-h-80 {
+  margin: 0 80px; }
+
 .mar-child-18:nth-last-child(1) {
   margin-left: 18px; }

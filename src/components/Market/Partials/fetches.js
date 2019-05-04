@@ -12,4 +12,11 @@ async function fetchCatAndProducts(catURL, proURL){
     }
 }
 
-export { fetchCatAndProducts }
+async function fetchProducts(proURL){
+    var prod = await fetch(proURL).then(res => res.json()).then(products => {
+        return products.data.products[0]
+    })
+    return prod
+}
+
+export { fetchCatAndProducts, fetchProducts }

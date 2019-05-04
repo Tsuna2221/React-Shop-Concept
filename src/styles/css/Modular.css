@@ -223,13 +223,13 @@
 .c-strong {
   color: #7E8084; }
 
-.c-white {
+.c-white, .t-button:hover {
   color: #F1F1F1; }
 
 .c-black {
   color: #4e4e4e; }
 
-.c-blue, .t-colorize-text:hover {
+.c-blue, .t-colorize-text:hover, .t-button {
   color: #6D9EE8; }
 
 .w-regular {
@@ -259,6 +259,9 @@
   transition: .2s ease; }
   .t-b-darken-text:hover {
     color: #4181e1; }
+
+.t-button {
+  transition: .3s ease; }
 
 .s-12 {
   font-size: 12px; }
@@ -326,6 +329,9 @@
 .bg-gray {
   background-color: #95989A; }
 
+.bg-blue, .t-button:hover {
+  background-color: #6D9EE8; }
+
 .bg-light-gray {
   background-color: #F5F6FA; }
 
@@ -381,7 +387,7 @@
 .d-none {
   display: none; }
 
-.d-flex, .sb-button {
+.d-flex, .t-button, .sb-button {
   display: flex; }
 
 .a-ver {
@@ -390,7 +396,7 @@
 .a-hor, .sb-button {
   justify-content: center; }
 
-.a-cen {
+.a-cen, .t-button {
   justify-content: center;
   align-items: center; }
 
@@ -415,7 +421,7 @@
 .bs-dashboard, .si-widthfit, .si-widthsmall, .si-widthmedium, .si-image {
   border: 1px solid #E2E2E2; }
 
-.bs-blue {
+.bs-blue, .t-button {
   border: 1px solid #6D9EE8; }
 
 .sbw-small, .si-widthsmall {
@@ -454,7 +460,7 @@
 .overflow-y-scroll {
   overflow-y: scroll; }
 
-.clickable, .sb-button, .tx-button {
+.clickable, .t-button, .sb-button, .tx-button {
   cursor: pointer; }
 
 .width-fit {

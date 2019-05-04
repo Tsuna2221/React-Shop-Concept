@@ -1,0 +1,11 @@
+.images-container {
+  display: grid;
+  align-items: center;
+  width: 565px;
+  height: 400px; }
+  .images-container img {
+    max-width: -webkit-fill-available;
+    max-height: -webkit-fill-available; }
+
+.product-main-container {
+  width: 535px; }

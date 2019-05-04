@@ -6,8 +6,6 @@ import { getQueryString } from '../Partials/queryPartials'
 import { fetchCatAndProducts } from '../Partials/fetches'
 
 
-/********** Set Constructor() ***********/
-
 class PathCategory extends Component {
     render() {
         return (
@@ -54,9 +52,9 @@ class PathCategory extends Component {
 
         for(var i = 0; i < total_pages; i++){
             if(parseInt(getQueryString().page) === (i + 1)){
-                pageList.push(<span className="s-18 c-black w-medium mar-h-6">{i + 1}</span>)
+                pageList.push(<span key={i} className="s-18 c-black w-medium mar-h-6">{i + 1}</span>)
             }else{
-                pageList.push(<a className="s-18 c-blue mar-h-6" href={url + pageString + (i + 1)}>{i + 1}</a>)
+                pageList.push(<a key={i} className="s-18 c-blue mar-h-6" href={url + pageString + (i + 1)}>{i + 1}</a>)
             }
         }
 
