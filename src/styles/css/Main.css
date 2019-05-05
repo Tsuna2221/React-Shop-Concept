@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth; }
+
 body {
   padding: 0;
   padding: 0;
@@ -28,3 +31,31 @@ a {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #818181; }
+
+.LoaderOverlay {
+  transition: 0.7s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffffec;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  z-index: 1000; }
+  .LoaderOverlay.inactive {
+    opacity: 0;
+    pointer-events: none; }
+  .LoaderOverlay .spinner {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    border-bottom: 3px solid #6d9ee8;
+    animation: rotate 0.7s linear infinite; }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

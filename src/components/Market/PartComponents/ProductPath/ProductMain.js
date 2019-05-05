@@ -7,7 +7,7 @@ class ProductMain extends Component {
     render() {
         var { company, about, price, quantity, category, pid } = this.props.product
         if(this.props.product){
-            var manufactURL = category ? '/c/' + category.category_name.replace(/\s/g, '-') + "/" + category.sub_category.name.replace(/\s/g, '-') + "?manufacturer=" + company.replace(/\s/g, '-') : ''
+            var manufactURL = category ? '/c/' + category.category_name.replace(/\s/g, '-') + "?manufacturer=" + company.replace(/\s/g, '-') : ''
             var desc = about ? about.description.length > 150 ? <span className="w-regular">{about.description.substr(0, 150)}... <a className="c-blue" href="#description">Read More</a></span> : <span>{about.description}</span> : ""
             var rating = about ? parseInt(about.rating) : 0
             var ratingArray = []
