@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import numeral from 'numeral'
 
 import starsFill from '../../../assets/star.svg'
 import stars from '../../../assets/star-outline.svg'
@@ -85,8 +84,8 @@ class ProductsSection extends Component {
                     <p className="product-title mar-v-8 s-14 c-medium">{title.substr(0,50)}...</p>
                     <div className="product-price-rating d-flex a-bet">
                         <div className="product-pricing mar-t-14">
-                            <h2 className="c-medium s-12">{numeral(fullPrice).format('$0,0.00')}</h2>
-                            <h1 className="c-blue s-18 w-medium mar-t-8">{numeral(price).format('$0,0.00')}</h1>
+                            <h2 className="c-medium s-12">{}</h2>
+                            <h1 className="c-blue s-18 w-medium mar-t-8">{}</h1>
                         </div>
                         <div className="product-rating">
                             {ratings}

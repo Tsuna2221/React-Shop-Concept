@@ -5,7 +5,7 @@ import stars from '../../../../assets/star-outline.svg'
 
 class ProductMain extends Component {
     render() {
-        var { company, about, price, quantity, category, pid } = this.props.product
+        var { company, about, price, category, pid } = this.props.product
         if(this.props.product){
             var manufactURL = category ? '/c/' + category.category_name.replace(/\s/g, '-') + "?manufacturer=" + company.replace(/\s/g, '-') : ''
             var desc = about ? about.description.length > 150 ? <span className="w-regular">{about.description.substr(0, 150)}... <a className="c-blue" href="#description">Read More</a></span> : <span>{about.description}</span> : ""
@@ -37,7 +37,7 @@ class ProductMain extends Component {
                         <div className="d-flex a-ver mar-t-16">
                             {ratingArray} 
                             <span className="mar-h-10 c-medium">|</span>
-                            <a className="s-14 w-regular c-blue" href="">Read Reviews (18)</a>
+                            <p className="s-14 w-regular c-blue">Read Reviews (18)</p>
                         </div>
                         <p className="s-14 w-medium c-black mar-t-16">Price: <span className="s-26 w-bold c-blue">{priceString}</span></p>
                     </div>

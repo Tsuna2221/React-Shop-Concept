@@ -32,8 +32,8 @@ class Body extends Component {
     }
 
     componentDidMount = () => {
-        var productsUrl = "http://127.0.0.1:5000/products"
-        var categoriesUrl = "http://127.0.0.1:5000/categories"
+        var productsUrl = "https://flask-market.herokuapp.com/products"
+        var categoriesUrl = "https://flask-market.herokuapp.com/categories"
 
         fetch(productsUrl)
             .then(res => res.json())

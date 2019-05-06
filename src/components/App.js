@@ -30,7 +30,7 @@ render() {
 	}
 
 	componentDidMount = () => {
-		let categoriesURL = 'http://127.0.0.1:5000/categories'
+		let categoriesURL = 'https://flask-market.herokuapp.com/categories'
 
 		fetch(categoriesURL).then(res => res.json()).then(res => this.setState({isLoading: false, category: res}))
 	}

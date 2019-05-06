@@ -76,7 +76,7 @@ class ProductForm extends Component {
     }
 
     submitForm = () => {
-        var url = 'http://127.0.0.1:5000/products/insert'
+        var url = 'https://flask-market.herokuapp.com/products/insert'
         var {title, company, category, price, subcategories, price_percentage, description } = this.state.form
         var imageState = this.state.imageArray
         var folderString = Math.random().toString(36).substr(2,6)

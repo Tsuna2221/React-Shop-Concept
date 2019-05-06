@@ -30,7 +30,7 @@ class PathProduct extends Component {
     }
 
     componentDidMount = () => {
-        var url = 'http://127.0.0.1:5000/products?id=' + getQueryString().ref
+        var url = 'https://flask-market.herokuapp.com/products?id=' + getQueryString().ref
         fetchProducts(url).then(product => this.setState({product}))
     }
 
