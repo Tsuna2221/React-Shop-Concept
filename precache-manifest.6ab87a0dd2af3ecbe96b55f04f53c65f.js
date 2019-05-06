@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "c5108154608855007045",
+    "revision": "4fe1c7d71d24a25ab333",
     "url": "/React-Shop-Concept/static/css/main.eac239d8.chunk.css"
   },
   {
-    "revision": "c5108154608855007045",
-    "url": "/React-Shop-Concept/static/js/main.1831dcc2.chunk.js"
+    "revision": "4fe1c7d71d24a25ab333",
+    "url": "/React-Shop-Concept/static/js/main.8c9c9e26.chunk.js"
   },
   {
     "revision": "21d8e3412bb5e6cee985",
     "url": "/React-Shop-Concept/static/js/runtime~main.0ff710f0.js"
   },
   {
-    "revision": "423df58151e335d9b1f8",
-    "url": "/React-Shop-Concept/static/js/2.4c5dcf8c.chunk.js"
+    "revision": "2e6892fcadba5c453c55",
+    "url": "/React-Shop-Concept/static/js/2.f0210440.chunk.js"
   },
   {
     "revision": "b50deb1c1eb888a9089c2dc096938b3d",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/React-Shop-Concept/static/media/phones.623403f2.png"
   },
   {
-    "revision": "fe8586532079861ce749ac2e411d5b2b",
+    "revision": "52bd909434f4ea6c8fb162f481c9630f",
     "url": "/React-Shop-Concept/index.html"
   }
 ];
