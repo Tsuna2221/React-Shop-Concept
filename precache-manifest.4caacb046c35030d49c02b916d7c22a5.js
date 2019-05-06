@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "4fe1c7d71d24a25ab333",
+    "revision": "a6437810702d7bd818aa",
     "url": "/React-Shop-Concept/static/css/main.eac239d8.chunk.css"
   },
   {
-    "revision": "4fe1c7d71d24a25ab333",
-    "url": "/React-Shop-Concept/static/js/main.8c9c9e26.chunk.js"
+    "revision": "a6437810702d7bd818aa",
+    "url": "/React-Shop-Concept/static/js/main.295cb54d.chunk.js"
   },
   {
     "revision": "21d8e3412bb5e6cee985",
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/React-Shop-Concept/static/media/phones.623403f2.png"
   },
   {
-    "revision": "52bd909434f4ea6c8fb162f481c9630f",
+    "revision": "ab436f9d8677b6c27a7132fd2ff66f98",
     "url": "/React-Shop-Concept/index.html"
   }
 ];
