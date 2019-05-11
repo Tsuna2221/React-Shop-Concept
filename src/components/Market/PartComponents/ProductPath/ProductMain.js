@@ -41,7 +41,7 @@ class ProductMain extends Component {
                         </div>
                         <p className="s-14 w-medium c-black mar-t-16">Price: <span className="s-26 w-bold c-blue">{priceString}</span></p>
                     </div>
-                    <div className="sbw-fit pad-18 t-button">
+                    <div className="sbw-fit pad-18 t-fit-button">
                         <span className="s-17">Add to Cart</span>
                     </div>
                 </div>

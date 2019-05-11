@@ -16,7 +16,7 @@
 .pad-14 {
   padding: 14px; }
 
-.pad-16 {
+.pad-16, .bt-normal {
   padding: 16px; }
 
 .pad-18 {
@@ -223,13 +223,13 @@
 .c-strong {
   color: #7E8084; }
 
-.c-white, .t-button:hover {
+.c-white, .t-button:hover, .bt-normal:hover, .t-fit-button:hover {
   color: #F1F1F1; }
 
 .c-black {
   color: #4e4e4e; }
 
-.c-blue, .t-colorize-text:hover, .t-button {
+.c-blue, .t-colorize-text:hover, .t-fit-button, .bt-normal {
   color: #6D9EE8; }
 
 .w-regular {
@@ -260,7 +260,13 @@
   .t-b-darken-text:hover {
     color: #4181e1; }
 
-.t-button {
+.t-clear-input {
+  transition: .2s ease; }
+
+.t-button, .bt-normal {
+  transition: .3s ease; }
+
+.t-fit-button {
   transition: .3s ease; }
 
 .s-12 {
@@ -323,13 +329,13 @@
 .sd-blue {
   box-shadow: 0px 0px 5px 2px #3EA6FF26; }
 
-.bg-white {
+.bg-white, .t-clear-input:focus {
   background-color: #fff; }
 
 .bg-gray {
   background-color: #95989A; }
 
-.bg-blue, .t-button:hover {
+.bg-blue, .t-button:hover, .bt-normal:hover, .t-fit-button:hover {
   background-color: #6D9EE8; }
 
 .bg-light-gray {
@@ -387,7 +393,7 @@
 .d-none {
   display: none; }
 
-.d-flex, .t-button, .sb-button {
+.d-flex, .t-fit-button, .sb-button, .bt-normal {
   display: flex; }
 
 .a-ver {
@@ -396,7 +402,7 @@
 .a-hor, .sb-button {
   justify-content: center; }
 
-.a-cen, .t-button {
+.a-cen, .t-fit-button, .bt-normal {
   justify-content: center;
   align-items: center; }
 
@@ -409,19 +415,25 @@
 .f-right {
   text-align: right; }
 
+.br-normal {
+  border-radius: 0px; }
+
 .br-low, .si-widthfit, .si-widthsmall, .si-widthmedium, .si-image, .sb-button, .tx-button {
   border-radius: 6px; }
 
 .br-circle {
   border-radius: 100px; }
 
+.bs-invisible {
+  border: 1px solid transparent; }
+
 .bs-light {
   border: 1px solid #dedede; }
 
-.bs-dashboard, .si-widthfit, .si-widthsmall, .si-widthmedium, .si-image {
+.bs-dashboard, .t-clear-input:focus, .si-widthfit, .si-widthsmall, .si-widthmedium, .si-image {
   border: 1px solid #E2E2E2; }
 
-.bs-blue, .t-button {
+.bs-blue, .t-fit-button, .bt-normal {
   border: 1px solid #6D9EE8; }
 
 .sbw-small, .si-widthsmall {
@@ -454,13 +466,17 @@
   padding: 10px 18px;
   color: #fff; }
 
+.bt-normal {
+  width: fit-content;
+  padding: 15px 26px; }
+
 .overflow-x-scroll {
   overflow-x: scroll; }
 
 .overflow-y-scroll {
   overflow-y: scroll; }
 
-.clickable, .t-button, .sb-button, .tx-button {
+.clickable, .t-fit-button, .sb-button, .tx-button, .bt-normal {
   cursor: pointer; }
 
 .width-fit {

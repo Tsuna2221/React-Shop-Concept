@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FormInput from './FormTemplate'
+import FormInput from '../../MainPartials/FormTemplate'
 import axios from 'axios'
 import cloudinary from 'cloudinary'
 

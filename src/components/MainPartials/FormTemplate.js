@@ -8,21 +8,35 @@ class FormInput extends Component {
             return (
                 <div key={label} className="form-input mar-t-16">
                     <p className="s-13 c-light2">{label}</p>
-                    <input onChange={handling} name={jkey} className="si-widthfit mar-t-10" type="text"/>
+                    <input required={this.props.required} onChange={handling} name={jkey} className={this.props.cls ? this.props.cls : "si-widthfit mar-t-10"} type="text"/>
                 </div>
             )
         }else if(type === 'area'){
             return (
                 <div key={label} className="form-input mar-t-16">
                     <p className="s-13 c-light2">{label}</p>
-                    <textarea onChange={handling} name={jkey} className="si-widthfit mar-t-10" cols="30" rows="10"></textarea>
+                    <textarea required={this.props.required} onChange={handling} name={jkey} className={this.props.cls ? this.props.cls : "si-widthfit mar-t-10"} cols="30" rows="10"></textarea>
+                </div>
+            )
+        }else if(type === 'password'){
+            return (
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
+                    <input required={this.props.required} onChange={handling} name={jkey} className={this.props.cls ? this.props.cls : "si-widthfit mar-t-10"} type="password"/>
+                </div>
+            )
+        }else if(type === 'email'){
+            return (
+                <div key={label} className="form-input mar-t-16">
+                    <p className="s-13 c-light2">{label}</p>
+                    <input required={this.props.required} onChange={handling} name={jkey} className={this.props.cls ? this.props.cls : "si-widthfit mar-t-10"} type="email"/>
                 </div>
             )
         }else if(type === 'medium'){
             return (
                 <div key={label} className="form-input mar-t-16">
                     <p className="s-13 c-light2">{label}</p>
-                    <input onChange={handling} name={jkey} className="si-widthmedium mar-t-10" type="text"/>
+                    <input required={this.props.required} onChange={handling} name={jkey} className={this.props.cls ? this.props.cls : "si-widthmedium mar-t-10"} type="text"/>
                 </div>
             )
         }
@@ -30,7 +44,7 @@ class FormInput extends Component {
             return (
                 <div key={label} className="form-input mar-t-16">
                     <p className="s-13 c-light2">{label}</p>
-                    <input onChange={handling} name={jkey} className="si-widthsmall mar-t-10" type="text"/>
+                    <input required={this.props.required} onChange={handling} name={jkey} className={this.props.cls ? this.props.cls : "si-widthsmall mar-t-10"} type="text"/>
                 </div>
             )
         }else if(type === 'image'){
@@ -52,7 +66,7 @@ class FormInput extends Component {
             return (
                 <div key={label} className="form-input mar-t-16">
                     <p className="s-13 c-light2">{label}</p>
-                    <select onChange={handling} name={jkey} className="si-widthmedium mar-t-10">
+                    <select required={this.props.required} onChange={handling} name={jkey} className="si-widthmedium mar-t-10">
                         <option value=""></option>
                         {this.drawSelection(this.props.selection)}
                     </select>
