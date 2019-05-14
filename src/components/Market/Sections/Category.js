@@ -17,7 +17,6 @@ class PathCategory extends Component {
     }
 
     state = {
-        linkCategory: {},
         linkProducts: {data: {}}
     }
 
@@ -29,7 +28,6 @@ class PathCategory extends Component {
         let categoriesURL = `https://flask-market.herokuapp.com/categories?category=${match.params.category.replace(/([-])/g, ' ')}`
         let productPre = `https://flask-market.herokuapp.com/products?offset=${page}${subString}&category=${match.params.category.replace(/([-])/g, ' ')}${companyString}`
         
-        console.log(productPre)
         if(!this.props.match.params.subcategory){
             fetchCatAndProducts(categoriesURL, productPre).then((data) => {this.setState({linkCategory: data.categories, linkProducts: data.products})})
         }else{

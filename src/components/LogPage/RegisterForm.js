@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
+import { validate } from "../MainPartials/FormValidation"
 import FormInput from "../MainPartials/FormTemplate"
 
 class RegisterForm extends Component {
@@ -20,10 +22,10 @@ class RegisterForm extends Component {
                         <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="E-mail" jkey="email" type="email"></FormInput>
                     </div>
                     <div className="row">
-                        <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="Confirm E-mail" jkey="confirm_email" type="email"></FormInput>
+                        <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="Password" jkey="password" type="password"></FormInput>
                     </div>
                     <div className="row">
-                        <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="Password" jkey="password" type="password"></FormInput>
+                        <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="Confirm Password" jkey="confirm_password" type="password"></FormInput>
                     </div>
                 </form>
 
@@ -45,11 +47,19 @@ class RegisterForm extends Component {
                 [e.target.name]: e.target.value
             }
         })
-        console.log(this.state.form)
     }
 
     formSubmit = () => {
-        console.log(this.state.form)
+        var { first_name, last_name, email, password, confirm_password } = this.state.form
+        var url = 'http://127.0.0.1:5000/customer/insert'
+
+        if(validate(email, 'email').valid && 
+           validate(password, 'password').valid && 
+           validate([password, confirm_password], 'passwordmatch').valid,
+           first_name,
+           last_name){
+            Axios.post(url, this.state.form).then(res => console.log(res))
+        }
     }
 }
 

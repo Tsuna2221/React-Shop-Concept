@@ -122,7 +122,7 @@ class ProductForm extends Component {
 
             console.log(data)
             axios.post(url, data).then(res => {
-                window.location.href = 'http://localhost:3000/admin/products'
+                window.location.href = 'https://localhost:3000/admin/products'
             })
         })
     }

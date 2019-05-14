@@ -65,9 +65,8 @@ class FormInput extends Component {
         }else if(type === 'select'){
             return (
                 <div key={label} className="form-input mar-t-16">
-                    <p className="s-13 c-light2">{label}</p>
-                    <select required={this.props.required} onChange={handling} name={jkey} className="si-widthmedium mar-t-10">
-                        <option value=""></option>
+                    <p className={"s-13 c-light2"}>{label}</p>
+                    <select required={this.props.required} onChange={handling} name={jkey} className={this.props.cls ? this.props.cls : "si-widthmedium mar-t-10"}>
                         {this.drawSelection(this.props.selection)}
                     </select>
                 </div>
@@ -92,6 +91,9 @@ class FormInput extends Component {
 
     drawSelection = (data) => {
         return data.map(select => {
+            if(select.title){
+                return <option value={select.value}>{select.title}</option>
+            }
             return <option value={select}>{select}</option>
         })
     }

@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import Axios from 'axios';
 
+import { validate } from "../MainPartials/FormValidation"
 import FormInput from "../MainPartials/FormTemplate"
 
 class LoginForm extends Component {
     render() {
+        var expirations = [
+            { title: '10 minutes', value: 10 },
+            { title: '20 minutes', value: 20 },
+            { title: '30 minutes', value: 30 },
+            { title: '1 hour', value: 60 },
+            { title: '1 day', value: 1440 },
+        ]
+
         return (
             <div className="form-dvn">
                 <div>
@@ -13,10 +23,13 @@ class LoginForm extends Component {
                 <div className="ln-light mar-v-18"></div>
                 <form onSubmit={this.formSubmit}>
                     <div className="row">
-                        <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="E-mail" jkey="email"></FormInput>
+                        <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="E-mail" jkey="email" type="email"></FormInput>
                     </div>
                     <div className="row">
                         <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-fit" required handling={this.handleInput} label="Password" jkey="password" type="password"></FormInput>
+                    </div>
+                    <div className="row d-flex a-hor">
+                        <FormInput cls="bg-light-gray t-clear-input br-normal bs-none no-outline pad-10 bs-invisible mar-t-10 sbw-small" required handling={this.handleInput} label="Keep me online for" jkey="timer" type="select" selection={expirations}></FormInput>
                     </div>
                 </form>
 
@@ -38,10 +51,18 @@ class LoginForm extends Component {
                 [e.target.name]: e.target.value
             }
         })
+        console.log(this.state)
     }
 
     formSubmit = () => {
-        console.log(this.state.form)
+        var { email, password } = this.state.form
+        var url = 'http://127.0.0.1:5000/customer/login'
+        var time = this.state.form.timer ? parseInt(this.state.form.timer) : 10
+
+        if(validate(email, 'email').valid && 
+           validate(password, 'password').valid){
+            Axios.post(url, {email, password, timer: time}).then(res => console.log(res.data))
+        }
     }
 }
 
