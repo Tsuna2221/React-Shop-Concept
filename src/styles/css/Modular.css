@@ -488,7 +488,7 @@
 .v-align {
   vertical-align: middle; }
 
-.no-select {
+.no-select, .bt-normal {
   user-select: none; }
 
 .price-top {

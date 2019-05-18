@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 import Sidebar from '../PartComponents/CategoryPath/Sidebar'
 import CatalogBody from '../PartComponents/CategoryPath/CatalogBody'
 import { getQueryString } from '../Partials/queryPartials'
-import { fetchCatAndProducts } from '../Partials/fetches'
+import { fetchCatAndProducts } from '../../MainPartials/fetches'
 
 
 class PathCategory extends Component {
     render() {
         return (
             <div className='PathCategory d-flex'>
-                <Sidebar category={this.state.linkCategory} products={this.state.linkProducts} match={this.props.match}/>
+                <Sidebar category={this.state.linkCategory ? this.state.linkCategory : {}} products={this.state.linkProducts} match={this.props.match}/>
                 <CatalogBody match={this.props.match} products={this.state.linkProducts} drawPages={this.drawPages}/>
             </div>
         );

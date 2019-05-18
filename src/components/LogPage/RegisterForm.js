@@ -54,11 +54,12 @@ class RegisterForm extends Component {
         var url = 'http://127.0.0.1:5000/customer/insert'
 
         if(validate(email, 'email').valid && 
-           validate(password, 'password').valid && 
-           validate([password, confirm_password], 'passwordmatch').valid,
-           first_name,
-           last_name){
-            Axios.post(url, this.state.form).then(res => console.log(res))
+            validate(password, 'password').valid && 
+            validate([password, confirm_password], 'passwordmatch').valid,
+            first_name,
+            last_name){
+                this.props.setLoader(true)
+                Axios.post(url, this.state.form).then(res => console.log(res)).then(res => this.props.setLoader(false))
         }
     }
 }

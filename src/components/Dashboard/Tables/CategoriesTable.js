@@ -13,7 +13,8 @@ class CategoriesTable extends Component {
         if(this.props.fetchedCategories.data){
             var categoriesTable = this.props.fetchedCategories.data.map(item => {
                 var { category_name, num_of_products, sub_categories, cid } = item
-    
+                var cathref = "/c/" + category_name.replace(/\s/g, '-')
+
                 return (
                     <tbody key={cid}>
                         <tr className="s-13 c-light2 table-border">
@@ -21,7 +22,7 @@ class CategoriesTable extends Component {
                             <td width="16%" className="v-align">{sub_categories.length}</td>
                             <td width="13%" className="v-align">{num_of_products}</td>
                             <td width="11%" className="v-align">14 Apr 2019</td>
-                            <td width="10%" className="v-align f-right w-semibold" style={{color: this.props.color}}>Link</td>
+                            <td width="10%" className="v-align f-right w-semibold"> <a href={cathref} style={{color: this.props.color}}>Link</a> </td>
                         </tr>
                     </tbody>
                 )

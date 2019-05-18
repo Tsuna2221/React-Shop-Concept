@@ -5,7 +5,7 @@ import ImageContainer from '../PartComponents/ProductPath/ImageContainer'
 import ProductMain from '../PartComponents/ProductPath/ProductMain'
 import ProductDescription from '../PartComponents/ProductPath/ProductDescription'
 
-import { fetchProducts } from '../Partials/fetches'
+import { fetchProducts } from '../../MainPartials/fetches'
 import { getQueryString } from '../Partials/queryPartials'
 
 class PathProduct extends Component {

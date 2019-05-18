@@ -11,7 +11,8 @@ class ProductsTable extends Component {
 
     drawTable = () => {
         var productTable = this.props.fetchedProducts.map(item => {
-            var { title, company, created_at, price, price_percentage, images} = item
+            var { title, company, created_at, price, price_percentage, images, pid } = item
+            var anchorhref = "/p/" + title.replace(/[-:'()–/\\]/g, '').replace(/\s/g, '-').toLowerCase() + '?ref=' + pid
             var parsedDiscount = (price, discount) => { return (Math.abs((discount*price/100) - price) / 100).toFixed(2)}
 
             return (
@@ -24,7 +25,7 @@ class ProductsTable extends Component {
                         <td width="13%" className="v-align">{company}</td>
                         <td width="10%" className="v-align">{created_at.substr(5,11)}</td>
                         <td width="11%" className="v-align">${parsedDiscount(price, price_percentage)} at {price_percentage}%</td>
-                        <td width="20%" className="v-align f-right w-semibold" style={{color: this.props.color}}>Link</td>
+                        <td width="20%" className="v-align f-right w-semibold"><a href={anchorhref} style={{color: this.props.color}}>Link</a></td>
                     </tr>
                 </tbody>
             )

@@ -1,10 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import {SearchBarProducts, SearchBarCategories} from './SearchBars/SearchBars'
+
 import ProductsTable from './Tables/ProductsTable'
 import CategoriesTable from './Tables/CategoriesTable'
+import CustomersTable from './Tables/CustomersTable'
+
 import ProductForm from './Forms/InsertProductForm'
 import CategoryForm from './Forms/InsertCategoryForm'
 import Counter from './MiscComponents/Counter'
+import { fetchData } from '../MainPartials/fetches'
 
 class Body extends Component {
     render() {
@@ -31,34 +35,13 @@ class Body extends Component {
         categoriesName: [],
     }
 
-    componentDidMount = () => {
-        var productsUrl = "https://flask-market.herokuapp.com/products"
-        var categoriesUrl = "https://flask-market.herokuapp.com/categories"
-
-        fetch(productsUrl)
-            .then(res => res.json())
-            .then(res => {this.setState({fetchedProducts: res.data.products})})
-            .then(fetch(categoriesUrl).then(res => res.json())
-            .then(res => {
-                let data = res.data
-                let categories = []
-
-                for(let i in data) categories.push(data[i].category_name)
-
-                this.setState(
-                    {
-                        ...this.state, 
-                        categoriesName: categories,
-                        fetchedCategories: res
-                    })                
-            }))
-    }
-
     drawPanel = () => {
         var { name, color } = this.props.currentSection
 
         switch(window.location.pathname){
             case "/admin/products":
+                fetchData("https://flask-market.herokuapp.com/products").then(res => this.setState({fetchedProducts: res.data.products}))
+
                 return(
                     <Fragment>
                         <SearchBarProducts color={color}/>
@@ -68,6 +51,17 @@ class Body extends Component {
                 )
 
             case "/admin/products/insert":
+                fetchData("https://flask-market.herokuapp.com/categories").then(res => {
+                    let data = res.data
+                    let categories = []
+
+                    for(let i in data) categories.push(data[i].category_name)
+
+                    this.setState({ 
+                        categoriesName: categories,
+                    })   
+                })
+
                 return(
                     <Fragment>
                         <ProductForm categories={this.state.categoriesName} color={color}/>
@@ -75,6 +69,8 @@ class Body extends Component {
                 )
 
             case "/admin/categories":
+                fetchData("https://flask-market.herokuapp.com/categories").then(res => this.setState({fetchedCategories: res}))
+
                 let {total_products, total_categories} = this.state.fetchedCategories
                 let countData = [
                     {
@@ -106,6 +102,30 @@ class Body extends Component {
                 return(
                     <Fragment>
                         <CategoryForm color={color}/>
+                    </Fragment>
+                )
+
+            case "/admin/customers":
+                var secret = 'rZP0y2lg5A61NtC'
+                var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidHN1bmEyMjIxQGxpdmUuY29tIiwiZXhwIjoxNTU3OTMyMDEyfQ.jEK3vz4YnMgTpkxvCUpN0YPr1wVnGaMr5P1YBQWouw8'
+
+                fetchData(`http://127.0.0.1:5000/customer/all?secret=${secret}&token=${token}`).then(res => this.setState({fetchedCustomers: res.data}))
+
+                var countData = [
+                    {
+                        label: "Registered Customers",
+                        count: this.state.fetchedCustomers ? this.state.fetchedCustomers.length : 0
+                    }
+                ]
+
+                return(
+                    <Fragment>
+                        <div className="d-flex a-bet">
+                            <div className="mar-t-20">
+                                <Counter color={color} data={countData}/>
+                            </div>
+                        </div>
+                        <CustomersTable fetchedCustomers={this.state.fetchedCustomers}/>
                     </Fragment>
                 )
 

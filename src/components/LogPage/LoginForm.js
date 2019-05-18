@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import Cookies from 'js-cookie'
 
 import { validate } from "../MainPartials/FormValidation"
 import FormInput from "../MainPartials/FormTemplate"
@@ -41,7 +42,10 @@ class LoginForm extends Component {
     }
 
     state = {
-
+        form: {
+            email: "",
+            password: ""    
+        }
     }
 
     handleInput = (e) => {
@@ -51,17 +55,23 @@ class LoginForm extends Component {
                 [e.target.name]: e.target.value
             }
         })
-        console.log(this.state)
     }
 
     formSubmit = () => {
         var { email, password } = this.state.form
-        var url = 'http://127.0.0.1:5000/customer/login'
+        var url = 'https://flask-market.herokuapp.com/customer/login'
         var time = this.state.form.timer ? parseInt(this.state.form.timer) : 10
+        var expirateIn = (minutes) => (1 / 1440) * minutes;
 
         if(validate(email, 'email').valid && 
            validate(password, 'password').valid){
-            Axios.post(url, {email, password, timer: time}).then(res => console.log(res.data))
+            this.props.setLoader(true)
+            Axios.post(url, {email, password, timer: time})
+                .then(res => Cookies.set('user', res.data, {
+                    expires: expirateIn(time)
+                }))
+                .then(() => this.props.setLoader(false))
+                .then(() => window.location.href = '/')
         }
     }
 }
