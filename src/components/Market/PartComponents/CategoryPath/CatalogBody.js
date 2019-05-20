@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { parsePrice } from '../../../MainPartials/parse'
 
 import starsFill from '../../../../assets/star.svg'
 import stars from '../../../../assets/star-outline.svg'
@@ -30,13 +31,7 @@ class CatalogBody extends Component {
                 let anchorhref = "/p/" + title.replace(/[-:'()–/\\]/g, '').replace(/\s/g, '-').toLowerCase() + '?ref=' + pid
 
                 let priceElement = () => {
-                    let parsedPrice = new Intl.NumberFormat('en-US', {
-                        style: 'currency', 
-                        currency: 'USD',
-                        minimumFractionDigits: 2 
-                    }).format(parseInt(price.toFixed().substr(0, price.toFixed().length - 2)))
-
-                    let priceArray = parsedPrice.split(".")
+                    let priceArray = parsePrice(price).split(".")
                     return (
                         <span className="s-24 w-regular c-blue t-b-darken-text clickable">{priceArray[0]}<span className="s-14 pos-relative price-top">{priceArray[1]}</span></span>
                     )

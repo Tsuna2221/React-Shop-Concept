@@ -18,26 +18,9 @@ class CategoriesSection extends Component {
         );
     }
 
-    state = {
-        categories: [
-            {
-                label: 'Cell Phones and Tablets',
-                img: Phones
-            },
-            {
-                label: 'Video Games',
-                img: Games
-            },
-            {
-                label: 'Computers and Office',
-                img: Computers
-            },
-        ]
-    }
-
     drawCategories = () => {
-        return this.state.categories.map(category => {
-            var {label, img} = category
+        return this.props.categories.map(category => {
+            var { label, image, id, href } = category
             var labelTitle = []
 
             for(var i = 0; i < 2; i++){
@@ -56,13 +39,13 @@ class CategoriesSection extends Component {
                 </Fragment>)
 
             return (
-                <div className="categories-cell">
+                <div key={id} className="categories-cell">
                     <div className="categories-interaction">
                         {drawLabel}
 
-                        <a href={'c/' + label.replace(/\s/g, '-')} className="categories-button bs-blue c-blue width-fit clickable mar-t-16">Shop Now</a>
+                        <a href={href} className="categories-button bs-blue c-blue width-fit clickable mar-t-16">Shop Now</a>
                     </div>
-                    <img src={img} className='sd-medium br-low' alt=""/>
+                    <img src={image} className='sd-medium br-low' alt=""/>
                 </div>
             )
         })

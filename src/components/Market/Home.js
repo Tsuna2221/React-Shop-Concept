@@ -8,10 +8,10 @@ class Home extends Component {
     render() {
         return (
             <Fragment>
-                <Banner/>
+                <Banner images={this.props.banners}/>
 				<div className="main-body">
-					<ProductsSection type="trending"/>
-					<CategoriesSection/>
+					<ProductsSection products={this.props.products} type="trending"/>
+					<CategoriesSection categories={this.props.categories}/>
 				</div>
             </Fragment>
         );

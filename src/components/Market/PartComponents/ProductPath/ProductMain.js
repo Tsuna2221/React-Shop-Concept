@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { parsePrice } from '../../../MainPartials/parse'
+
 import starsFill from '../../../../assets/star.svg'
 import stars from '../../../../assets/star-outline.svg'
 
@@ -11,13 +13,7 @@ class ProductMain extends Component {
             var desc = about ? about.description.length > 150 ? <span className="w-regular">{about.description.substr(0, 150)}... <a className="c-blue" href="#description">Read More</a></span> : <span>{about.description}</span> : ""
             var rating = about ? parseInt(about.rating) : 0
             var ratingArray = []
-            var priceString = price ? 
-                new Intl.NumberFormat('en-US', {
-                    style: 'currency', 
-                    currency: 'USD',
-                    minimumFractionDigits: 2 
-                }).format(parseInt(price.toFixed().substr(0, price.toFixed().length - 2)))
-            : ""
+            var priceString = parsePrice(price)
 
             if(pid){
                 for(var i = 0; i < 5; i++){

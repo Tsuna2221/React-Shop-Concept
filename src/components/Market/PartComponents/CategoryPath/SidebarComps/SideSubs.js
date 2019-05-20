@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-import { getAnchor } from "../../../Partials/queryPartials"
+import { getAnchor } from "../../../../MainPartials/queryPartials"
 
 var SideSubs = (props) => {
     var drawCategory = () => {

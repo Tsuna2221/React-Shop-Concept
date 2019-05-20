@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Sidebar from '../PartComponents/CategoryPath/Sidebar'
 import CatalogBody from '../PartComponents/CategoryPath/CatalogBody'
-import { getQueryString } from '../Partials/queryPartials'
+import { getQueryString } from '../../MainPartials/queryPartials'
 import { fetchCatAndProducts } from '../../MainPartials/fetches'
 
 

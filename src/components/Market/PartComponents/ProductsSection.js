@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import starsFill from '../../../assets/star.svg'
 import stars from '../../../assets/star-outline.svg'
+import { parsePrice } from '../../MainPartials/parse';
 
 class ProductsSection extends Component {
     render() {
@@ -20,47 +21,11 @@ class ProductsSection extends Component {
     }
 
     state = {
-        products: [
-            {
-                title: 'ASUS Zenbook Core I7-8550u 512gb SSD 16gb RAM 14" Full HD Mx150 Backlit KB',
-                fullPrice: 399,
-                price: 159,
-                rating: 5,
-                id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
-            },
-            {
-                title: 'ASUS Zenbook Core I7-8550u 512gb SSD 16gb RAM 14" Full HD Mx150 Backlit KB',
-                fullPrice: 399,
-                price: 159,
-                rating: 4,
-                id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
-            },
-            {
-                title: 'ASUS Zenbook Core I7-8550u 512gb SSD 16gb RAM 14" Full HD Mx150 Backlit KB',
-                fullPrice: 399,
-                price: 159,
-                rating: 3,
-                id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
-            },
-            {
-                title: 'ASUS Zenbook Core I7-8550u 512gb SSD 16gb RAM 14" Full HD Mx150 Backlit KB',
-                fullPrice: 399,
-                price: 159,
-                rating: 2,
-                id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
-            },
-            {
-                title: 'ASUS Zenbook Core I7-8550u 512gb SSD 16gb RAM 14" Full HD Mx150 Backlit KB',
-                fullPrice: 399,
-                price: 159,
-                rating: 4,
-                id: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5)
-            }
-        ]
+
     }
 
     componentDidMount = () => {
-        return this.state.products.map(product => {
+        return this.props.products.map(product => {
             for(var i = 0; i < product.rating; i++){
                 document.querySelector('.' + product.id + (i + 1)).setAttribute('src', starsFill)
             }
@@ -70,30 +35,34 @@ class ProductsSection extends Component {
     }
 
     drawProducts = () => {
-        return this.state.products.map(product => {
-            var {title, fullPrice, price, id} = product
-            var ratings = []
-
-            for(var i = 0; i < 5; i++){
-                ratings.push(<img src={stars} className={"star-rating "+ id + (i + 1)} alt=""/>)
-            }
-
-            return (
-                <div key={id} className="product-cell pad-14 sd-medium br-low bg-white">
-                    <img src="https://res.cloudinary.com/db5msl9ld/image/upload/v1555259827/eumx9w/mhh4i4iskfwdfscul78n.jpg" className="product-img" alt=""/>
-                    <p className="product-title mar-v-8 s-14 c-medium">{title.substr(0,50)}...</p>
-                    <div className="product-price-rating d-flex a-bet">
-                        <div className="product-pricing mar-t-14">
-                            <h2 className="c-medium s-12">{}</h2>
-                            <h1 className="c-blue s-18 w-medium mar-t-8">{}</h1>
+        if(this.props.products){
+            return this.props.products.map(product => {
+                var {title, price, id, image, price_discount} = product
+                var ratings = []
+    
+                for(var i = 0; i < 5; i++){
+                    ratings.push(<img src={stars} className={"star-rating "+ id + (i + 1)} alt=""/>)
+                }
+    
+                return (
+                    <div key={id} className="product-cell pad-14 sd-medium br-low bg-white">
+                        <div className="product-img">
+                            <img src={image} className="d-flex mar-h-cen" alt=""/>
                         </div>
-                        <div className="product-rating">
-                            {ratings}
+                        <p className="product-title mar-v-8 s-14 c-medium">{title.substr(0,40)}...</p>
+                        <div className="product-price-rating d-flex a-bet">
+                            <div className="product-pricing mar-t-14">
+                                <h2 className="c-medium s-12">{parsePrice(price)}</h2>
+                                <h1 className="c-blue s-18 w-medium mar-t-8">{parsePrice(price)}</h1>
+                            </div>
+                            <div className="product-rating">
+                                {ratings}
+                            </div>
                         </div>
                     </div>
-                </div>
-            )
-        })
+                )
+            })
+        }
     }
 }
 export default ProductsSection;

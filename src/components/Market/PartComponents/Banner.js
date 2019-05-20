@@ -3,10 +3,9 @@ import React, { Component } from 'react';
 class Banner extends Component {
     render() {
         return (
-            <div className='main-banner-container mar-t-16'>
+            <div className='main-banner-container'>
                 <div className='Banner-Container'>
-                    
-                    {this.drawBanner(this.state.bannerLength)}
+                    {this.drawBanner(this.props.images.length)}
                 </div>
             </div>
         );
@@ -14,23 +13,24 @@ class Banner extends Component {
 
     state = {
         index: 1,
-        bannerLength: 4
     }
 
     componentDidMount = () => {
-        this.transitionTiming(this.state.bannerLength)
+        this.transitionTiming()
     }
 
     drawBanner = (num) => {
         var times = []
+        var { images } = this.props
         for(var i = 0; i < num; i++){ times.push(i) }
 
-        return times.slice().map((e, i) => <div key={i} className={`banner d-flex a-cen nb${i + 1}`}>{i + 1}</div>)
+        return times.slice().map((e, i) => <div key={i} className={`banner d-flex a-cen nb${i + 1}`}> <img className="auto-height sbw-inherit" src={images[i]}/> </div>)
     }
 
-    transitionTiming = (num) => setInterval(() => {
+    transitionTiming = () => setInterval(() => {
         var times = []
-        for(var i = 0; i < num; i++){ times.push(i) }
+        var { images } = this.props
+        for(var i = 0; i < images.length; i++){ times.push(i) }
 
         !times.includes(this.state.index) ? this.setState({index: 1}) : this.setState({index: this.state.index + 1})
 

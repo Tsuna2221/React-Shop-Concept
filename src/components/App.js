@@ -13,26 +13,39 @@ render() {
 	return (
 		<div className="App">
 			<LoaderOverlay isLoading={this.state.isLoading}/>
-			<Header categories={this.state.category}/>
+			<Header categories={this.state.categories}/>
 			<Router>
-				<Route exact path="/" component={Home}/>
-				<Route exact path='/c/:category' component={PathCategory}/>
-				<Route exact path='/c/:category/:subcategory' component={PathCategory}/>
-				<Route exact path='/p/:productName' component={PathProduct}/>
+				<Route exact path="/" render={() => <Home categories={this.state.trend.categories} products={this.state.trend.products} banners={this.state.banners}/>}/>
+				<Route exact path='/c/:category' render={(props) => <PathCategory {...props}/>}/>
+				<Route exact path='/c/:category/:subcategory' render={(props) => <PathCategory {...props}/>}/>
+				<Route exact path='/p/:productName' render={() => <PathProduct/>}/>
 			</Router>
 		</div>
 		);
 	}
 
 	state = {
-		category: {data: []},
+		categories: [],
+		banners: [],
+		trend: {
+			categories: [],
+			products: []
+		},
 		isLoading: true
 	}
 
 	componentDidMount = () => {
-		let categoriesURL = 'https://flask-market.herokuapp.com/categories'
+		let mainURL = 'http://127.0.0.1:5000/'
 
-		fetch(categoriesURL).then(res => res.json()).then(res => this.setState({isLoading: false, category: res}))
+		fetch(mainURL).then(res => res.json()).then(res => this.setState({
+			isLoading: false, 
+			categories: res.data.featured_categories,
+			banners: res.data.banners,
+			trend: {
+				categories: res.data.trend.category,
+				products: res.data.trend.product
+			}
+		}))
 	}
 }
 

@@ -21,7 +21,12 @@ class UserHead extends Component {
 
                 <div className="UserHead__side-right d-flex a-ver mar-r-20">
                     <div className="cell-profile mar-r-30">
-                        {this.drawUser()}
+                        {isLogged()
+                        ?
+                        <p className="c-medium s-13">Hello, <a href="/" className="c-blue">{this.state.data.name}</a></p>
+                        :
+                        <p className="c-medium s-13">Hello, <a href="/log" className="c-blue">Sign In</a> or <a href="/log" className="c-blue">Register</a></p>
+                        }
                     </div>
                     <div className="cell-notification d-flex a-ver">
                         <div className="alert-notification d-flex">
@@ -43,14 +48,6 @@ class UserHead extends Component {
     }
 
     componentDidMount = () => {if (isLogged()) { getUser().then(data => this.setState({data: data.data})) }}
-
-    drawUser = () => {
-        if(isLogged()){
-            return <p className="c-medium s-13">Hello, <a href="/" className="c-blue">{this.state.data.name}</a></p>
-        }else{
-            return <p className="c-medium s-13">Hello, <a href="/" className="c-blue">Sign In</a> or <a href="/" className="c-blue">Register</a></p>
-        }
-    }
 }
 
 export default UserHead;

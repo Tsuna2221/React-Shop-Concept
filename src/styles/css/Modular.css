@@ -378,6 +378,10 @@
 .pos-absolute {
   position: absolute; }
 
+.pos-sticky {
+  position: sticky;
+  top: 20px; }
+
 .lh-normal {
   line-height: 1em; }
 
@@ -395,6 +399,9 @@
 
 .d-flex, .t-fit-button, .sb-button, .bt-normal {
   display: flex; }
+
+.d-grid {
+  display: grid; }
 
 .a-ver {
   align-items: center; }
@@ -448,11 +455,23 @@
 .sbw-fit, .si-widthfit {
   width: -webkit-fill-available; }
 
+.sbw-inherit {
+  width: inherit; }
+
+.sbw-auto {
+  width: auto; }
+
 .body-height {
   height: calc(100vh - 45px); }
 
 .fit-height {
   height: -webkit-fill-available; }
+
+.inherit-height {
+  height: inherit; }
+
+.auto-height {
+  height: auto; }
 
 .si-image {
   width: 110px;
@@ -493,3 +512,9 @@
 
 .price-top {
   top: -0.5em; }
+
+.wq {
+  display: grid;
+  align-items: center;
+  width: 190px;
+  height: 170px; }

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { getAnchor } from "../../../Partials/queryPartials"
+
+import { getAnchor } from "../../../../MainPartials/queryPartials"
 
 class SideManufact extends Component {
     render() {
