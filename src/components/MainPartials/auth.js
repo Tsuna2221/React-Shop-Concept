@@ -9,6 +9,11 @@ var isLogged = () => {
     return false
 }
 
+var getToken = () => {
+    var cookie = Cookies.get('user')
+    return JSON.parse(cookie)
+}
+
 async function getUser(){
     var cookie = Cookies.get('user')
     if(cookie){
@@ -23,4 +28,4 @@ async function getUser(){
     }
 }
 
-export { isLogged, getUser }
+export { isLogged, getUser, getToken }

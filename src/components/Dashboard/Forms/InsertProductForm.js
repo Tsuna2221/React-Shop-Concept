@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FormInput from '../../MainPartials/FormTemplate'
 import axios from 'axios'
-import cloudinary from 'cloudinary'
+import cloudinary from './cloudinary'
 
 cloudinary.config({ 
     cloud_name: 'db5msl9ld', 

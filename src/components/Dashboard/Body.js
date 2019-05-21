@@ -9,6 +9,7 @@ import ProductForm from './Forms/InsertProductForm'
 import CategoryForm from './Forms/InsertCategoryForm'
 import Counter from './MiscComponents/Counter'
 import { fetchData } from '../MainPartials/fetches'
+import { getToken } from '../MainPartials/auth'
 
 class Body extends Component {
     render() {
@@ -106,10 +107,10 @@ class Body extends Component {
                 )
 
             case "/admin/customers":
-                var secret = 'rZP0y2lg5A61NtC'
-                var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidHN1bmEyMjIxQGxpdmUuY29tIiwiZXhwIjoxNTU3OTMyMDEyfQ.jEK3vz4YnMgTpkxvCUpN0YPr1wVnGaMr5P1YBQWouw8'
+                var secret = getToken().data.secret
+                var token = getToken().data.token
 
-                fetchData(`http://127.0.0.1:5000/customer/all?secret=${secret}&token=${token}`).then(res => this.setState({fetchedCustomers: res.data}))
+                fetchData(`https://flask-market.herokuapp.com/customer/all?secret=${secret}&token=${token}`).then(res => this.setState({fetchedCustomers: res.data}))
 
                 var countData = [
                     {
