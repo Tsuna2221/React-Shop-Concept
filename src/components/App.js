@@ -35,7 +35,7 @@ render() {
 	}
 
 	componentDidMount = () => {
-		let mainURL = 'http://127.0.0.1:5000/'
+		let mainURL = 'https://flask-market.herokuapp.com/'
 
 		fetch(mainURL).then(res => res.json()).then(res => this.setState({
 			isLoading: false, 
