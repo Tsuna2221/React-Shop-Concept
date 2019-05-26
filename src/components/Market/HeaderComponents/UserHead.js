@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Cookies from 'js-cookie'
-
 import { isLogged, getUser } from '../../MainPartials/auth'
 
 class UserHead extends Component {

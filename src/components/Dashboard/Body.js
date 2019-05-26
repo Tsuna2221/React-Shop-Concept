@@ -40,7 +40,7 @@ class Body extends Component {
 
         switch(window.location.pathname){
             case "/admin/products":
-                fetchData("https://flask-market.herokuapp.com/products").then(res => this.setState({fetchedProducts: res.data.products}))
+                fetchData("http://127.0.0.1:5000//products").then(res => this.setState({fetchedProducts: res.data.products}))
 
                 return(
                     <Fragment>
@@ -51,7 +51,7 @@ class Body extends Component {
                 )
 
             case "/admin/products/insert":
-                fetchData("https://flask-market.herokuapp.com/categories").then(res => {
+                fetchData("http://127.0.0.1:5000//categories").then(res => {
                     let data = res.data
                     let categories = []
 
@@ -69,7 +69,7 @@ class Body extends Component {
                 )
 
             case "/admin/categories":
-                fetchData("https://flask-market.herokuapp.com/categories").then(res => this.setState({fetchedCategories: res}))
+                fetchData("http://127.0.0.1:5000/categories").then(res => this.setState({fetchedCategories: res}))
 
                 let {total_products, total_categories} = this.state.fetchedCategories
                 let countData = [
@@ -110,13 +110,6 @@ class Body extends Component {
                 var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoidHN1bmEyMjIxQGxpdmUuY29tIiwiZXhwIjoxNTU3OTMyMDEyfQ.jEK3vz4YnMgTpkxvCUpN0YPr1wVnGaMr5P1YBQWouw8'
 
                 fetchData(`http://127.0.0.1:5000/customer/all?secret=${secret}&token=${token}`).then(res => this.setState({fetchedCustomers: res.data}))
-
-                var countData = [
-                    {
-                        label: "Registered Customers",
-                        count: this.state.fetchedCustomers ? this.state.fetchedCustomers.length : 0
-                    }
-                ]
 
                 return(
                     <Fragment>

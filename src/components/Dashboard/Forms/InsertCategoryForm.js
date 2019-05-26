@@ -29,7 +29,7 @@ class CategoryForm extends Component {
     }
 
     submitForm = () => {
-        var url = 'https://flask-market.herokuapp.com/categories/insert'
+        var url = 'http://127.0.0.1:5000/categories/insert'
         var { category_name } = this.state.form
 
         var data = {

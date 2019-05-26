@@ -24,7 +24,7 @@ class Banner extends Component {
         var { images } = this.props
         for(var i = 0; i < num; i++){ times.push(i) }
 
-        return times.slice().map((e, i) => <div key={i} className={`banner d-flex a-cen nb${i + 1}`}> <img className="auto-height sbw-inherit" src={images[i]}/> </div>)
+        return times.slice().map((e, i) => <div key={i} className={`banner d-flex a-cen nb${i + 1}`}> <img className="auto-height sbw-inherit" src={images[i]} alt=""/> </div>)
     }
 
     transitionTiming = () => setInterval(() => {

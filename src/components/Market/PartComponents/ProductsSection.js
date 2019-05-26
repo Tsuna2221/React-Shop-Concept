@@ -37,7 +37,7 @@ class ProductsSection extends Component {
     drawProducts = () => {
         if(this.props.products){
             return this.props.products.map(product => {
-                var {title, price, id, image, price_discount} = product
+                var {title, price, id, image } = product
                 var ratings = []
     
                 for(var i = 0; i < 5; i++){

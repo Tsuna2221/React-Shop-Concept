@@ -1,9 +1,5 @@
 import React, { Component, Fragment } from 'react';
 
-import Computers from '../../../assets/computers.png'
-import Games from '../../../assets/games.png'
-import Phones from '../../../assets/phones.png'
-
 class CategoriesSection extends Component {
     render() {
         return (

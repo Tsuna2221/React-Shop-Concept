@@ -10,7 +10,7 @@ var SideSubs = (props) => {
         }
 
         if(props.category){
-            var { category_name, sub_categories } = props.category
+            var { category_name, sub_categories } = props.category[0]
             var subParam = props.param
             var typos = []
     

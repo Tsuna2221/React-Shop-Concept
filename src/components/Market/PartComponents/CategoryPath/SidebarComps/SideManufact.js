@@ -20,7 +20,7 @@ class SideManufact extends Component {
 
     drawManufacturer = () => {
         if(this.props.category){
-            var { category_name } = this.props.category
+            var { category_name } = this.props.category[0]
             var manufacturers = []
             var listState = this.state.manufactList
             var buttonLabel = listState.active ? "Show Less" : 'Show More'

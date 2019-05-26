@@ -59,7 +59,7 @@ class LoginForm extends Component {
 
     formSubmit = () => {
         var { email, password } = this.state.form
-        var url = 'https://flask-market.herokuapp.com/customer/login'
+        var url = 'http://127.0.0.1:5000/customer/login'
         var time = this.state.form.timer ? parseInt(this.state.form.timer) : 10
         var expirateIn = (minutes) => (1 / 1440) * minutes;
 

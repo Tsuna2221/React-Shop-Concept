@@ -1,6 +1,7 @@
 const validate = (data, type) => {
     switch (type) {
         case 'email':
+            // eslint-disable-next-line
             var exp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
             var test = exp.test(data)
 
@@ -14,8 +15,6 @@ const validate = (data, type) => {
                 valid: true,
                 message: "Valid Email"        
             }
-
-            break;
         
         case 'passwordmatch':
             if(data[0] !== data[1]){
@@ -29,8 +28,6 @@ const validate = (data, type) => {
                 valid: true,
                 message: "Valid Passwords"        
             }
-
-            break;
 
         case 'password':
             if(data.length >= 6){
@@ -62,8 +59,6 @@ const validate = (data, type) => {
                 valid: true,
                 message: "Valid Password"        
             }
-
-            break;
     
         default:
             break;

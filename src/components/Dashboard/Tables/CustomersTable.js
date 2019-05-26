@@ -12,7 +12,7 @@ class CustomersTable extends Component {
     drawTable = () => {
         if(this.props.fetchedCustomers){
             var customersTable = this.props.fetchedCustomers.map(item => {
-                var { name, created_at, id, email } = item
+                var { name, id, email } = item
 
                 return (
                     <tbody key={id}>
@@ -22,8 +22,8 @@ class CustomersTable extends Component {
                             <td className="v-align">{email}</td>
                             <td className="v-align">{0}</td>
                             <td className="v-align">{0}</td>
-                            <td className="v-align f-right w-semibold"><a href='#' style={{color: this.props.color}}>Link</a></td>
-                            <td className="v-align f-right w-semibold"><a href="#" style={{color: this.props.color}}>Link</a></td>
+                            <td className="v-align f-right w-semibold"><a style={{color: this.props.color}}>Link</a></td>
+                            <td className="v-align f-right w-semibold"><a style={{color: this.props.color}}>Link</a></td>
                         </tr>
                     </tbody>
                 )

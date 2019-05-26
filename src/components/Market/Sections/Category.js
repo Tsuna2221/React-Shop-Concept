@@ -25,8 +25,8 @@ class PathCategory extends Component {
         let page = (parseInt(getQueryString().page || 1) * 20) - 20 || 0
         let companyString = getQueryString().manufacturer ? `&company=${getQueryString().manufacturer.replace(/-/g, " ")}` : "" 
         let subString = match.params.subcategory ? `&sub=${match.params.subcategory.replace(/-/g, " ")}` : "" 
-        let categoriesURL = `https://flask-market.herokuapp.com/categories?category=${match.params.category.replace(/([-])/g, ' ')}`
-        let productPre = `https://flask-market.herokuapp.com/products?offset=${page}${subString}&category=${match.params.category.replace(/([-])/g, ' ')}${companyString}`
+        let categoriesURL = `http://127.0.0.1:5000/categories?category=${match.params.category.replace(/([-])/g, ' ')}`
+        let productPre = `http://127.0.0.1:5000/products?offset=${page}${subString}&category=${match.params.category.replace(/([-])/g, ' ')}${companyString}`
         
         if(!this.props.match.params.subcategory){
             fetchCatAndProducts(categoriesURL, productPre).then((data) => {this.setState({linkCategory: data.categories, linkProducts: data.products})})

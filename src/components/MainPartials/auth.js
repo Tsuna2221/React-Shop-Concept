@@ -15,7 +15,7 @@ async function getUser(){
         cookie = JSON.parse(cookie)
 
         var { id, secret, token } = cookie.data
-        var url = `https://flask-market.herokuapp.com/customer?id=${id}&secret=${secret}&token=${token}`
+        var url = `http://127.0.0.1:5000/customer?id=${id}&secret=${secret}&token=${token}`
     
         var data = await Axios.get(url).then(res => res.data)
     

@@ -55,6 +55,7 @@ class RegisterForm extends Component {
 
         if(validate(email, 'email').valid && 
             validate(password, 'password').valid && 
+            // eslint-disable-next-line
             validate([password, confirm_password], 'passwordmatch').valid,
             first_name,
             last_name){
