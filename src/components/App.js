@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Cookies from 'js-cookie'
 
 import Header from './Market/PartComponents/Header'
 import LoaderOverlay from './Market/PartComponents/LoaderOverlay'
@@ -35,7 +36,7 @@ render() {
 	}
 
 	componentDidMount = () => {
-		let mainURL = 'https://flask-market.herokuapp.com/'
+		let mainURL = 'http://127.0.0.1:5000/'
 
 		fetch(mainURL).then(res => res.json()).then(res => this.setState({
 			isLoading: false, 

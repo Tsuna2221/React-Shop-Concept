@@ -1,9 +1,5 @@
 const {GraphQLObjectType, GraphQLString,
-    GraphQLList, GraphQLSchema, 
-    GraphQLBoolean, GraphQLInt,
-    GraphQLFloat, GraphQLDirective, 
-    GraphQLNonNull, GraphQLEnumType,
-    GraphQLID} = require('graphql')
+    GraphQLList} = require('graphql')
 ;
 
 const SubType = new GraphQLObjectType({

@@ -9,6 +9,8 @@ const {GraphQLObjectType, GraphQLString,
 
 const ProductType = require('./ProductType')
 const CategoryType = require('./CategoryType')
+const MainType = require('./MainType')
+const CustomerType = require('./CustomerType')
 
 const rootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
@@ -50,7 +52,7 @@ const rootQuery = new GraphQLObjectType({
         product: {
             type: ProductType,
             args: {
-                id: { type: GraphQLString },
+                id: { type: new GraphQLNonNull(GraphQLString) },
             },
             resolve(parent, args){
                 let { id } = args
@@ -81,6 +83,30 @@ const rootQuery = new GraphQLObjectType({
                 let url = `http://127.0.0.1:5000/categories?${id ? "&id=" + id : ''}${category ? "&category=" + category : ''}`
 
                 return axios.get(url).then(res => res.data.data[0])
+            }
+        },
+
+        main: {
+            type: MainType,
+            resolve(parent, args){
+                let url = "http://127.0.0.1:5000/"
+
+                return axios.get(url).then(res => res.data.data)
+            }
+        },
+
+        customer: {
+            type: CustomerType,
+            args: {
+                secret: { type: new GraphQLNonNull(GraphQLString) },
+                token: { type: new GraphQLNonNull(GraphQLString) },
+                id: { type: new GraphQLNonNull(GraphQLString) },
+            },
+            resolve(parent, args){
+                let { id, secret, token } = args
+                let url = `http://127.0.0.1:5000/customer?id=${id}&secret=${secret}&token=${token}`
+
+                return axios.get(url).then(res => res.data.data)
             }
         }
     }

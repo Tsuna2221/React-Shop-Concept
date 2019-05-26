@@ -41,7 +41,7 @@ class Body extends Component {
 
         switch(window.location.pathname){
             case "/admin/products":
-                fetchData("http://127.0.0.1:5000//products").then(res => this.setState({fetchedProducts: res.data.products}))
+                fetchData("http://127.0.0.1:5000/products").then(res => this.setState({fetchedProducts: res.data.products}))
 
                 return(
                     <Fragment>
@@ -52,7 +52,7 @@ class Body extends Component {
                 )
 
             case "/admin/products/insert":
-                fetchData("http://127.0.0.1:5000//categories").then(res => {
+                fetchData("http://127.0.0.1:5000/categories").then(res => {
                     let data = res.data
                     let categories = []
 
@@ -110,7 +110,7 @@ class Body extends Component {
                 var secret = getToken().data.secret
                 var token = getToken().data.token
 
-                fetchData(`https://flask-market.herokuapp.com/customer/all?secret=${secret}&token=${token}`).then(res => this.setState({fetchedCustomers: res.data}))
+                fetchData(`http://127.0.0.1:5000/customer/all?secret=${secret}&token=${token}`).then(res => this.setState({fetchedCustomers: res.data}))
 
                 return(
                     <Fragment>
