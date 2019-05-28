@@ -22,8 +22,8 @@ class CustomersTable extends Component {
                             <td className="v-align">{email}</td>
                             <td className="v-align">{0}</td>
                             <td className="v-align">{0}</td>
-                            <td className="v-align f-right w-semibold"><a style={{color: this.props.color}}>Link</a></td>
-                            <td className="v-align f-right w-semibold"><a style={{color: this.props.color}}>Link</a></td>
+                            <td className="v-align f-right w-semibold"><div style={{color: this.props.color}}>Link</div></td>
+                            <td className="v-align f-right w-semibold"><div style={{color: this.props.color}}>Link</div></td>
                         </tr>
                     </tbody>
                 )

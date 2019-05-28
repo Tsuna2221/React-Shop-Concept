@@ -1,10 +1,10 @@
 const axios = require("axios")
-const ProductType = require('./ProductType')
+const exp = require('./ProductType')
+
 const {GraphQLObjectType, GraphQLString,
        GraphQLList, GraphQLNonNull, GraphQLInt,
        GraphQLID} = require('graphql')
 ;
-
 
 const SubType = new GraphQLObjectType({
     name: 'sub_categories',
@@ -21,7 +21,7 @@ const CategoryType = new GraphQLObjectType({
         cid: { type: GraphQLString },
         sub_categories: { type: new GraphQLList(SubType) },
         products: { 
-            type: new GraphQLList(ProductType),
+            type: exp.product,
             args: {
                 limit: { type: GraphQLInt },
                 offset: { type: GraphQLInt },
@@ -39,8 +39,7 @@ const CategoryType = new GraphQLObjectType({
 
                 let url = `http://127.0.0.1:5000/products?${limit ? 'limit=' + limit : 'limit=20'}${offset ? '&offset=' + offset : '&offset=0'}${'&category=' + parent.category_name}${sub ? '&sub=' + sub : ''}${type ? '&type=' + type : ''}${company ? '&company=' + company : ''}${id ? '&id=' + id : ''}${minprice ? '&minprice=' + minprice : ''}${maxprice ? '&maxprice=' + maxprice : ''}${rating ? '&rating=' + rating : ''}`.replace(/^\s+|\s+$/g, '');
 
-                console.log(url)
-                return axios.get(url).then(res => res.data.data.products)
+                return axios.get(url).then(res => res.data.data)
             }
         }
     })

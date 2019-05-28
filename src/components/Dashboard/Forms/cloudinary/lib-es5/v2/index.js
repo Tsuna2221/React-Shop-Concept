@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use strict';
 
 var v1 = require('../cloudinary.js');

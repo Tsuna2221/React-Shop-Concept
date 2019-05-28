@@ -28,7 +28,7 @@ const SubType = new GraphQLObjectType({
     })
 })
 
-const ProductType = new GraphQLObjectType({
+const DataType = new GraphQLObjectType({
     name: 'products',
     fields: () => ({
         title: { type: GraphQLString },
@@ -45,4 +45,24 @@ const ProductType = new GraphQLObjectType({
     })
 })
 
-module.exports = ProductType
+const ProductType = new GraphQLObjectType({
+    name: 'query_data',
+    fields: () => ({
+        list_companies: { type: new GraphQLList(GraphQLString) },
+        list_subs: { type: new GraphQLList(GraphQLString) },
+        list_types: { type: new GraphQLList(GraphQLString) },
+        products: { type: new GraphQLList(DataType) },
+        query_next: { type: GraphQLString },
+        query_prev: { type: GraphQLString },
+        total_length: { type: GraphQLInt },
+        total_pages: { type: GraphQLInt },
+        total_query: { type: GraphQLInt },
+    })
+})
+
+const exp = {
+    product: ProductType,
+    data: DataType
+}
+
+module.exports = exp

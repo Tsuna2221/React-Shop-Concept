@@ -1,51 +1,60 @@
-import React, { Component } from 'react';
+import React from 'react';
+
+import { gql } from "apollo-boost"
+import { graphql } from 'react-apollo'
 
 import Sidebar from '../PartComponents/CategoryPath/Sidebar'
 import CatalogBody from '../PartComponents/CategoryPath/CatalogBody'
-import { getQueryString } from '../../MainPartials/queryPartials'
-import { fetchCatAndProducts } from '../../MainPartials/fetches'
+import { getQueryString, checkIfArgs } from '../../MainPartials/queryPartials'
+import LoaderOverlay from '../PartComponents/LoaderOverlay'
 
+let categoryArray = window.location.pathname.substr(3).replace(/-/g, " ").split("/")
 
-class PathCategory extends Component {
-    render() {
-        return (
-            <div className='PathCategory d-flex'>
-                <Sidebar category={this.state.linkCategory ? this.state.linkCategory : {}} products={this.state.linkProducts} match={this.props.match}/>
-                <CatalogBody match={this.props.match} products={this.state.linkProducts} drawPages={this.drawPages}/>
-            </div>
-        );
-    }
-
-    state = {
-        linkProducts: {data: {}}
-    }
-
-    componentDidMount = () => {
-        let { match } = this.props
-        let page = (parseInt(getQueryString().page || 1) * 20) - 20 || 0
-        let companyString = getQueryString().manufacturer ? `&company=${getQueryString().manufacturer.replace(/-/g, " ")}` : "" 
-        let subString = match.params.subcategory ? `&sub=${match.params.subcategory.replace(/-/g, " ")}` : "" 
-        let categoriesURL = `http://127.0.0.1:5000/categories?category=${match.params.category.replace(/([-])/g, ' ')}`
-        let productPre = `http://127.0.0.1:5000/products?offset=${page}${subString}&category=${match.params.category.replace(/([-])/g, ' ')}${companyString}`
-        
-        if(!this.props.match.params.subcategory){
-            fetchCatAndProducts(categoriesURL, productPre).then((data) => {this.setState({linkCategory: data.categories, linkProducts: data.products})})
-        }else{
-            let productSubsURL = `${productPre}&sub=${this.props.match.params.subcategory.replace(/-/g, " ")}`
-
-            if(getQueryString().type){
-                fetchCatAndProducts(categoriesURL, productSubsURL + `&type=${getQueryString().type}`).then((data) => {this.setState({linkCategory: data.categories, linkProducts: data.products})})
-            }else{
-                fetchCatAndProducts(categoriesURL, productSubsURL).then((data) => {this.setState({linkCategory: data.categories, linkProducts: data.products})})
+const categoryQuery = gql`
+{
+	category(category: "${categoryArray[0]}") {
+        category_name
+        cid
+        sub_categories {
+            name
+            types
+        }
+        products${checkIfArgs(categoryArray[1])}{
+            list_companies
+            list_subs
+            list_types
+            total_pages
+            products{
+                title
+                price
+                pid
+                company
+                images
+                about{
+                    rating
+                }
+                category{
+                    category_name
+                    sub_category{
+                        name
+                        type
+                    }
+                }
             }
         }
-    }
+	}
+}
+`
 
-    drawPages = () => {
+const PathCategory = ({match, data: { loading, error, category }}) => {
+	if (loading) return <LoaderOverlay isLoading={loading}/>
+    if (error) return <p>Error :(</p>;
+        
+    let drawPages = () => {
         var { href, origin, pathname } = window.location
         var pageString = href.includes('?') ? href.includes('?page') ? '?page=' : '&page=' : '?page='
         var url = href.includes('?page') ? origin + pathname : href.replace(/[&page=]+[0-9]/, "")
-        var { total_pages } = this.state.linkProducts
+        var { total_pages } = category.products
         var pageList = []
 
         for(var i = 0; i < total_pages; i++){
@@ -58,6 +67,13 @@ class PathCategory extends Component {
 
         return pageList
     }
+
+    return (
+        <div className='PathCategory d-flex'>
+            <Sidebar category={category} match={match}/>
+            <CatalogBody match={match} products={category.products.products} drawPages={drawPages}/>
+        </div>
+    );
 }
 
-export default PathCategory;
+export default graphql(categoryQuery)(PathCategory);

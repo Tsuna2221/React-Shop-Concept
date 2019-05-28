@@ -20,10 +20,6 @@ class ProductsSection extends Component {
         }
     }
 
-    state = {
-
-    }
-
     componentDidMount = () => {
         return this.props.products.map(product => {
             for(var i = 0; i < product.rating; i++){
@@ -41,7 +37,7 @@ class ProductsSection extends Component {
                 var ratings = []
     
                 for(var i = 0; i < 5; i++){
-                    ratings.push(<img src={stars} className={"star-rating "+ id + (i + 1)} alt=""/>)
+                    ratings.push(<img key={i + 1} src={stars} className={"star-rating "+ id + (i + 1)} alt=""/>)
                 }
     
                 return (

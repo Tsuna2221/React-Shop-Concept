@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use strict";
 
 // http://kevin.vanzonneveld.net

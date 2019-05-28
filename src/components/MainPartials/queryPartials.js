@@ -14,4 +14,21 @@ var getAnchor = (string, query) => {
     }
 }
 
-export { getQueryString, getAnchor }
+const checkIfArgs = (sub) => {
+    let { type, manufacturer, page } = getQueryString()
+    let parsed_page = (parseInt(page || 1) * 20) - 20 || 0
+
+    let { t, p, m, s } = {
+        t: type ? `type: "${type}"` : '',
+        p: parsed_page ? `offset: ${parsed_page}` : '',
+        m: manufacturer ? `company: "${manufacturer}"` : '',
+        s: sub ? `sub: "${sub}"`: ''
+    }
+
+    if(t || p || m || s){
+        return `(${t} ${p} ${m} ${s})`
+    }
+    return ''
+}
+
+export { getQueryString, getAnchor, checkIfArgs }

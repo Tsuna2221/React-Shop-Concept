@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Navigation = (props) => {
-    if(props.productCategory){
-        var { category_name, sub_category } = props.productCategory
+const Navigation = ({productCategory}) => {
+    if(productCategory){
+        var { category_name, sub_category } = productCategory
         var catURL = '/c/' + category_name.replace(/\s/g, '-')
         var subURL = '/c/' + category_name.replace(/\s/g, '-') + "/" + sub_category.name.replace(/\s/g, '-')
         var typeURL = '/c/' + category_name.replace(/\s/g, '-') + "/" + sub_category.name.replace(/\s/g, '-') + "?type=" + sub_category.type.replace(/\s/g, '-')

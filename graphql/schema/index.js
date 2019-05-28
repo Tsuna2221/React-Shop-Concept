@@ -7,7 +7,7 @@ const {GraphQLObjectType, GraphQLString,
     GraphQLID} = require('graphql')
 ;
 
-const ProductType = require('./ProductType')
+const exp = require('./ProductType')
 const CategoryType = require('./CategoryType')
 const MainType = require('./MainType')
 const CustomerType = require('./CustomerType')
@@ -16,7 +16,7 @@ const rootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields:{
         products: {
-            type: new GraphQLList(ProductType),
+            type: exp.product,
             args: {
                 limit: { type: GraphQLInt },
                 offset: { type: GraphQLInt },
@@ -34,12 +34,12 @@ const rootQuery = new GraphQLObjectType({
 
                 let url = `http://127.0.0.1:5000/products?${limit ? 'limit=' + limit : 'limit=20'}${offset ? '&offset=' + offset : '&offset=0'}${category ? '&category=' + category : ''}${sub ? '&sub=' + sub : ''}${type ? '&type=' + type : ''}${company ? '&company=' + company : ''}${id ? '&id=' + id : ''}${minprice ? '&minprice=' + minprice : ''}${maxprice ? '&maxprice=' + maxprice : ''}${rating ? '&rating=' + rating : ''}`.replace(/\s/g, '')
 
-                return axios.get(url).then(res => res.data.data.products)
+                return axios.get(url).then(res => res.data.data)
             }
         },
         
         product: {
-            type: ProductType,
+            type: exp.data,
             args: {
                 id: { type: new GraphQLNonNull(GraphQLString) },
             },
