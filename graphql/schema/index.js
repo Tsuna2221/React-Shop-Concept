@@ -32,18 +32,7 @@ const rootQuery = new GraphQLObjectType({
             resolve(parent, args){
                 let { limit, offset, id, category, sub, type, company, minprice, maxprice, rating } = args
 
-                let url = `http://127.0.0.1:5000/products?
-                ${limit ? 'limit=' + limit : 'limit=20'}
-                ${offset ? '&offset=' + offset : '&offset=0'}
-                ${category ? '&category=' + category : ''}
-                ${sub ? '&sub=' + sub : ''}
-                ${type ? '&type=' + type : ''}
-                ${company ? '&company=' + company : ''}
-                ${id ? '&id=' + id : ''}
-                ${minprice ? '&minprice=' + minprice : ''}
-                ${maxprice ? '&maxprice=' + maxprice : ''}
-                ${rating ? '&rating=' + rating : ''}
-                `.replace(/\s/g, '')
+                let url = `http://127.0.0.1:5000/products?${limit ? 'limit=' + limit : 'limit=20'}${offset ? '&offset=' + offset : '&offset=0'}${category ? '&category=' + category : ''}${sub ? '&sub=' + sub : ''}${type ? '&type=' + type : ''}${company ? '&company=' + company : ''}${id ? '&id=' + id : ''}${minprice ? '&minprice=' + minprice : ''}${maxprice ? '&maxprice=' + maxprice : ''}${rating ? '&rating=' + rating : ''}`.replace(/\s/g, '')
 
                 return axios.get(url).then(res => res.data.data.products)
             }
